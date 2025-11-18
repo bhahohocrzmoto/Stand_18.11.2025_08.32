@@ -1,0 +1,416 @@
+* FastHenry input file created using FreeCAD's ElectroMagnetic Workbench
+* See http://www.freecad.org, http://www.fastfieldsolvers.com and http://epc-co.com
+
+.units mm
+
+.default sigma=58000.0 nhinc=1 nwinc=1 rh=2 rw=2
+
+* Nodes
+NSection-1_Node_1 x=24.375 y=0.0 z=0.0
+NSection-1_Node_2 x=24.18500189 y=3.11831069 z=0.0
+NSection-1_Node_3 x=23.597553 y=6.18800711 z=0.0
+NSection-1_Node_4 x=22.62197096 y=9.15862101 z=0.0
+NSection-1_Node_5 x=21.27395744 y=11.98126962 z=0.0
+NSection-1_Node_6 x=19.57534548 y=14.60946002 z=0.0
+NSection-1_Node_7 x=17.55374598 y=16.99985498 z=0.0
+NSection-1_Node_8 x=15.24209891 y=19.11298749 z=0.0
+NSection-1_Node_9 x=12.67813661 y=20.91391242 z=0.0
+NSection-1_Node_10 x=9.90376797 y=22.37278436 z=0.0
+NSection-1_Node_11 x=6.96439335 y=23.46535217 z=0.0
+NSection-1_Node_12 x=3.90816172 y=24.17336209 z=0.0
+NSection-1_Node_13 x=0.78518189 y=24.48486259 z=0.0
+NSection-1_Node_14 x=-2.353299 y=24.39440596 z=0.0
+NSection-1_Node_15 x=-5.45573647 y=23.90314328 z=0.0
+NSection-1_Node_16 x=-8.4711352 y=23.01881091 z=0.0
+NSection-1_Node_17 x=-11.34988728 y=21.755609 z=0.0
+NSection-1_Node_18 x=-14.04458832 y=20.13397348 z=0.0
+NSection-1_Node_19 x=-16.51081804 y=18.18024561 z=0.0
+NSection-1_Node_20 x=-18.70787251 y=15.92624407 z=0.0
+NSection-1_Node_21 x=-20.59943595 y=13.40874687 z=0.0
+NSection-1_Node_22 x=-22.15418091 y=10.66889123 z=0.0
+NSection-1_Node_23 x=-23.34628716 y=7.75150139 z=0.0
+NSection-1_Node_24 x=-24.15587038 y=4.70435533 z=0.0
+NSection-1_Node_25 x=-24.56931374 y=1.57740228 z=0.0
+NSection-1_Node_26 x=-24.57949685 y=-1.57805606 z=0.0
+NSection-1_Node_27 x=-24.18591811 y=-4.71020713 z=0.0
+NSection-1_Node_28 x=-23.39470838 y=-7.76757834 z=0.0
+NSection-1_Node_29 x=-22.21853583 y=-10.69988292 z=0.0
+NSection-1_Node_30 x=-20.67640322 y=-13.45884701 z=0.0
+NSection-1_Node_31 x=-18.79334094 y=-15.9990044 z=0.0
+NSection-1_Node_32 x=-16.60000081 y=-18.27844575 z=0.0
+NSection-1_Node_33 x=-14.13215719 y=-20.25951005 z=0.0
+NSection-1_Node_34 x=-11.43012351 y=-21.90940684 z=0.0
+NSection-1_Node_35 x=-8.53809373 y=-23.20075887 z=0.0
+NSection-1_Node_36 x=-5.50341953 y=-24.1120564 z=0.0
+NSection-1_Node_37 x=-2.37583502 y=-24.62801535 z=0.0
+NSection-1_Node_38 x=0.79335831 y=-24.73983356 z=0.0
+NSection-1_Node_39 x=3.95213312 y=-24.44534074 z=0.0
+NSection-1_Node_40 x=7.04859029 y=-23.74903959 z=0.0
+NSection-1_Node_41 x=10.03181168 y=-22.66203733 z=0.0
+NSection-1_Node_42 x=12.85269738 y=-21.20186866 z=0.0
+NSection-1_Node_43 x=15.46477384 y=-19.39221302 z=0.0
+NSection-1_Node_44 x=17.82495951 y=-17.26251064 z=0.0
+NSection-1_Node_45 x=19.89427539 y=-14.8474836 z=0.0
+NSection-1_Node_46 x=21.63848874 y=-12.18656982 z=0.0
+NSection-1_Node_47 x=23.02867934 y=-9.32327898 z=0.0
+NSection-1_Node_48 x=24.04171901 y=-6.30448115 z=0.0
+NSection-1_Node_49 x=24.66065629 y=-3.17963953 z=0.0
+NSection-1_Node_50 x=24.875 y=0.0 z=0.0
+NSection-2_Node_1 x=24.875 y=0.0 z=1.0
+NSection-2_Node_2 x=24.66065629 y=3.17963953 z=1.0
+NSection-2_Node_3 x=24.04171901 y=6.30448115 z=1.0
+NSection-2_Node_4 x=23.02867934 y=9.32327898 z=1.0
+NSection-2_Node_5 x=21.63848874 y=12.18656982 z=1.0
+NSection-2_Node_6 x=19.89427539 y=14.8474836 z=1.0
+NSection-2_Node_7 x=17.82495951 y=17.26251064 z=1.0
+NSection-2_Node_8 x=15.46477384 y=19.39221302 z=1.0
+NSection-2_Node_9 x=12.85269738 y=21.20186866 z=1.0
+NSection-2_Node_10 x=10.03181168 y=22.66203733 z=1.0
+NSection-2_Node_11 x=7.04859029 y=23.74903959 z=1.0
+NSection-2_Node_12 x=3.95213312 y=24.44534074 z=1.0
+NSection-2_Node_13 x=0.79335831 y=24.73983356 z=1.0
+NSection-2_Node_14 x=-2.37583502 y=24.62801535 z=1.0
+NSection-2_Node_15 x=-5.50341953 y=24.1120564 z=1.0
+NSection-2_Node_16 x=-8.53809373 y=23.20075887 z=1.0
+NSection-2_Node_17 x=-11.43012351 y=21.90940684 z=1.0
+NSection-2_Node_18 x=-14.13215719 y=20.25951005 z=1.0
+NSection-2_Node_19 x=-16.60000081 y=18.27844575 z=1.0
+NSection-2_Node_20 x=-18.79334094 y=15.9990044 z=1.0
+NSection-2_Node_21 x=-20.67640322 y=13.45884701 z=1.0
+NSection-2_Node_22 x=-22.21853583 y=10.69988292 z=1.0
+NSection-2_Node_23 x=-23.39470838 y=7.76757834 z=1.0
+NSection-2_Node_24 x=-24.18591811 y=4.71020713 z=1.0
+NSection-2_Node_25 x=-24.57949685 y=1.57805606 z=1.0
+NSection-2_Node_26 x=-24.56931374 y=-1.57740228 z=1.0
+NSection-2_Node_27 x=-24.15587038 y=-4.70435533 z=1.0
+NSection-2_Node_28 x=-23.34628716 y=-7.75150139 z=1.0
+NSection-2_Node_29 x=-22.15418091 y=-10.66889123 z=1.0
+NSection-2_Node_30 x=-20.59943595 y=-13.40874687 z=1.0
+NSection-2_Node_31 x=-18.70787251 y=-15.92624407 z=1.0
+NSection-2_Node_32 x=-16.51081804 y=-18.18024561 z=1.0
+NSection-2_Node_33 x=-14.04458832 y=-20.13397348 z=1.0
+NSection-2_Node_34 x=-11.34988728 y=-21.755609 z=1.0
+NSection-2_Node_35 x=-8.4711352 y=-23.01881091 z=1.0
+NSection-2_Node_36 x=-5.45573647 y=-23.90314328 z=1.0
+NSection-2_Node_37 x=-2.353299 y=-24.39440596 z=1.0
+NSection-2_Node_38 x=0.78518189 y=-24.48486259 z=1.0
+NSection-2_Node_39 x=3.90816172 y=-24.17336209 z=1.0
+NSection-2_Node_40 x=6.96439335 y=-23.46535217 z=1.0
+NSection-2_Node_41 x=9.90376797 y=-22.37278436 z=1.0
+NSection-2_Node_42 x=12.67813661 y=-20.91391242 z=1.0
+NSection-2_Node_43 x=15.24209891 y=-19.11298749 z=1.0
+NSection-2_Node_44 x=17.55374598 y=-16.99985498 z=1.0
+NSection-2_Node_45 x=19.57534548 y=-14.60946002 z=1.0
+NSection-2_Node_46 x=21.27395744 y=-11.98126962 z=1.0
+NSection-2_Node_47 x=22.62197096 y=-9.15862101 z=1.0
+NSection-2_Node_48 x=23.597553 y=-6.18800711 z=1.0
+NSection-2_Node_49 x=24.18500189 y=-3.11831069 z=1.0
+NSection-2_Node_50 x=24.375 y=0.0 z=1.0
+NSection-3_Node_1 x=24.375 y=0.0 z=2.0
+NSection-3_Node_2 x=24.18500189 y=3.11831069 z=2.0
+NSection-3_Node_3 x=23.597553 y=6.18800711 z=2.0
+NSection-3_Node_4 x=22.62197096 y=9.15862101 z=2.0
+NSection-3_Node_5 x=21.27395744 y=11.98126962 z=2.0
+NSection-3_Node_6 x=19.57534548 y=14.60946002 z=2.0
+NSection-3_Node_7 x=17.55374598 y=16.99985498 z=2.0
+NSection-3_Node_8 x=15.24209891 y=19.11298749 z=2.0
+NSection-3_Node_9 x=12.67813661 y=20.91391242 z=2.0
+NSection-3_Node_10 x=9.90376797 y=22.37278436 z=2.0
+NSection-3_Node_11 x=6.96439335 y=23.46535217 z=2.0
+NSection-3_Node_12 x=3.90816172 y=24.17336209 z=2.0
+NSection-3_Node_13 x=0.78518189 y=24.48486259 z=2.0
+NSection-3_Node_14 x=-2.353299 y=24.39440596 z=2.0
+NSection-3_Node_15 x=-5.45573647 y=23.90314328 z=2.0
+NSection-3_Node_16 x=-8.4711352 y=23.01881091 z=2.0
+NSection-3_Node_17 x=-11.34988728 y=21.755609 z=2.0
+NSection-3_Node_18 x=-14.04458832 y=20.13397348 z=2.0
+NSection-3_Node_19 x=-16.51081804 y=18.18024561 z=2.0
+NSection-3_Node_20 x=-18.70787251 y=15.92624407 z=2.0
+NSection-3_Node_21 x=-20.59943595 y=13.40874687 z=2.0
+NSection-3_Node_22 x=-22.15418091 y=10.66889123 z=2.0
+NSection-3_Node_23 x=-23.34628716 y=7.75150139 z=2.0
+NSection-3_Node_24 x=-24.15587038 y=4.70435533 z=2.0
+NSection-3_Node_25 x=-24.56931374 y=1.57740228 z=2.0
+NSection-3_Node_26 x=-24.57949685 y=-1.57805606 z=2.0
+NSection-3_Node_27 x=-24.18591811 y=-4.71020713 z=2.0
+NSection-3_Node_28 x=-23.39470838 y=-7.76757834 z=2.0
+NSection-3_Node_29 x=-22.21853583 y=-10.69988292 z=2.0
+NSection-3_Node_30 x=-20.67640322 y=-13.45884701 z=2.0
+NSection-3_Node_31 x=-18.79334094 y=-15.9990044 z=2.0
+NSection-3_Node_32 x=-16.60000081 y=-18.27844575 z=2.0
+NSection-3_Node_33 x=-14.13215719 y=-20.25951005 z=2.0
+NSection-3_Node_34 x=-11.43012351 y=-21.90940684 z=2.0
+NSection-3_Node_35 x=-8.53809373 y=-23.20075887 z=2.0
+NSection-3_Node_36 x=-5.50341953 y=-24.1120564 z=2.0
+NSection-3_Node_37 x=-2.37583502 y=-24.62801535 z=2.0
+NSection-3_Node_38 x=0.79335831 y=-24.73983356 z=2.0
+NSection-3_Node_39 x=3.95213312 y=-24.44534074 z=2.0
+NSection-3_Node_40 x=7.04859029 y=-23.74903959 z=2.0
+NSection-3_Node_41 x=10.03181168 y=-22.66203733 z=2.0
+NSection-3_Node_42 x=12.85269738 y=-21.20186866 z=2.0
+NSection-3_Node_43 x=15.46477384 y=-19.39221302 z=2.0
+NSection-3_Node_44 x=17.82495951 y=-17.26251064 z=2.0
+NSection-3_Node_45 x=19.89427539 y=-14.8474836 z=2.0
+NSection-3_Node_46 x=21.63848874 y=-12.18656982 z=2.0
+NSection-3_Node_47 x=23.02867934 y=-9.32327898 z=2.0
+NSection-3_Node_48 x=24.04171901 y=-6.30448115 z=2.0
+NSection-3_Node_49 x=24.66065629 y=-3.17963953 z=2.0
+NSection-3_Node_50 x=24.875 y=0.0 z=2.0
+NSection-4_Node_1 x=24.875 y=0.0 z=3.0
+NSection-4_Node_2 x=24.66065629 y=3.17963953 z=3.0
+NSection-4_Node_3 x=24.04171901 y=6.30448115 z=3.0
+NSection-4_Node_4 x=23.02867934 y=9.32327898 z=3.0
+NSection-4_Node_5 x=21.63848874 y=12.18656982 z=3.0
+NSection-4_Node_6 x=19.89427539 y=14.8474836 z=3.0
+NSection-4_Node_7 x=17.82495951 y=17.26251064 z=3.0
+NSection-4_Node_8 x=15.46477384 y=19.39221302 z=3.0
+NSection-4_Node_9 x=12.85269738 y=21.20186866 z=3.0
+NSection-4_Node_10 x=10.03181168 y=22.66203733 z=3.0
+NSection-4_Node_11 x=7.04859029 y=23.74903959 z=3.0
+NSection-4_Node_12 x=3.95213312 y=24.44534074 z=3.0
+NSection-4_Node_13 x=0.79335831 y=24.73983356 z=3.0
+NSection-4_Node_14 x=-2.37583502 y=24.62801535 z=3.0
+NSection-4_Node_15 x=-5.50341953 y=24.1120564 z=3.0
+NSection-4_Node_16 x=-8.53809373 y=23.20075887 z=3.0
+NSection-4_Node_17 x=-11.43012351 y=21.90940684 z=3.0
+NSection-4_Node_18 x=-14.13215719 y=20.25951005 z=3.0
+NSection-4_Node_19 x=-16.60000081 y=18.27844575 z=3.0
+NSection-4_Node_20 x=-18.79334094 y=15.9990044 z=3.0
+NSection-4_Node_21 x=-20.67640322 y=13.45884701 z=3.0
+NSection-4_Node_22 x=-22.21853583 y=10.69988292 z=3.0
+NSection-4_Node_23 x=-23.39470838 y=7.76757834 z=3.0
+NSection-4_Node_24 x=-24.18591811 y=4.71020713 z=3.0
+NSection-4_Node_25 x=-24.57949685 y=1.57805606 z=3.0
+NSection-4_Node_26 x=-24.56931374 y=-1.57740228 z=3.0
+NSection-4_Node_27 x=-24.15587038 y=-4.70435533 z=3.0
+NSection-4_Node_28 x=-23.34628716 y=-7.75150139 z=3.0
+NSection-4_Node_29 x=-22.15418091 y=-10.66889123 z=3.0
+NSection-4_Node_30 x=-20.59943595 y=-13.40874687 z=3.0
+NSection-4_Node_31 x=-18.70787251 y=-15.92624407 z=3.0
+NSection-4_Node_32 x=-16.51081804 y=-18.18024561 z=3.0
+NSection-4_Node_33 x=-14.04458832 y=-20.13397348 z=3.0
+NSection-4_Node_34 x=-11.34988728 y=-21.755609 z=3.0
+NSection-4_Node_35 x=-8.4711352 y=-23.01881091 z=3.0
+NSection-4_Node_36 x=-5.45573647 y=-23.90314328 z=3.0
+NSection-4_Node_37 x=-2.353299 y=-24.39440596 z=3.0
+NSection-4_Node_38 x=0.78518189 y=-24.48486259 z=3.0
+NSection-4_Node_39 x=3.90816172 y=-24.17336209 z=3.0
+NSection-4_Node_40 x=6.96439335 y=-23.46535217 z=3.0
+NSection-4_Node_41 x=9.90376797 y=-22.37278436 z=3.0
+NSection-4_Node_42 x=12.67813661 y=-20.91391242 z=3.0
+NSection-4_Node_43 x=15.24209891 y=-19.11298749 z=3.0
+NSection-4_Node_44 x=17.55374598 y=-16.99985498 z=3.0
+NSection-4_Node_45 x=19.57534548 y=-14.60946002 z=3.0
+NSection-4_Node_46 x=21.27395744 y=-11.98126962 z=3.0
+NSection-4_Node_47 x=22.62197096 y=-9.15862101 z=3.0
+NSection-4_Node_48 x=23.597553 y=-6.18800711 z=3.0
+NSection-4_Node_49 x=24.18500189 y=-3.11831069 z=3.0
+NSection-4_Node_50 x=24.375 y=0.0 z=3.0
+
+* Segments
+EFHSegment NSection-1_Node_1 NSection-1_Node_2 w=0.25 h=0.035
+EFHSegment001 NSection-1_Node_2 NSection-1_Node_3 w=0.25 h=0.035
+EFHSegment002 NSection-1_Node_3 NSection-1_Node_4 w=0.25 h=0.035
+EFHSegment003 NSection-1_Node_4 NSection-1_Node_5 w=0.25 h=0.035
+EFHSegment004 NSection-1_Node_5 NSection-1_Node_6 w=0.25 h=0.035
+EFHSegment005 NSection-1_Node_6 NSection-1_Node_7 w=0.25 h=0.035
+EFHSegment006 NSection-1_Node_7 NSection-1_Node_8 w=0.25 h=0.035
+EFHSegment007 NSection-1_Node_8 NSection-1_Node_9 w=0.25 h=0.035
+EFHSegment008 NSection-1_Node_9 NSection-1_Node_10 w=0.25 h=0.035
+EFHSegment009 NSection-1_Node_10 NSection-1_Node_11 w=0.25 h=0.035
+EFHSegment010 NSection-1_Node_11 NSection-1_Node_12 w=0.25 h=0.035
+EFHSegment011 NSection-1_Node_12 NSection-1_Node_13 w=0.25 h=0.035
+EFHSegment012 NSection-1_Node_13 NSection-1_Node_14 w=0.25 h=0.035
+EFHSegment013 NSection-1_Node_14 NSection-1_Node_15 w=0.25 h=0.035
+EFHSegment014 NSection-1_Node_15 NSection-1_Node_16 w=0.25 h=0.035
+EFHSegment015 NSection-1_Node_16 NSection-1_Node_17 w=0.25 h=0.035
+EFHSegment016 NSection-1_Node_17 NSection-1_Node_18 w=0.25 h=0.035
+EFHSegment017 NSection-1_Node_18 NSection-1_Node_19 w=0.25 h=0.035
+EFHSegment018 NSection-1_Node_19 NSection-1_Node_20 w=0.25 h=0.035
+EFHSegment019 NSection-1_Node_20 NSection-1_Node_21 w=0.25 h=0.035
+EFHSegment020 NSection-1_Node_21 NSection-1_Node_22 w=0.25 h=0.035
+EFHSegment021 NSection-1_Node_22 NSection-1_Node_23 w=0.25 h=0.035
+EFHSegment022 NSection-1_Node_23 NSection-1_Node_24 w=0.25 h=0.035
+EFHSegment023 NSection-1_Node_24 NSection-1_Node_25 w=0.25 h=0.035
+EFHSegment024 NSection-1_Node_25 NSection-1_Node_26 w=0.25 h=0.035
+EFHSegment025 NSection-1_Node_26 NSection-1_Node_27 w=0.25 h=0.035
+EFHSegment026 NSection-1_Node_27 NSection-1_Node_28 w=0.25 h=0.035
+EFHSegment027 NSection-1_Node_28 NSection-1_Node_29 w=0.25 h=0.035
+EFHSegment028 NSection-1_Node_29 NSection-1_Node_30 w=0.25 h=0.035
+EFHSegment029 NSection-1_Node_30 NSection-1_Node_31 w=0.25 h=0.035
+EFHSegment030 NSection-1_Node_31 NSection-1_Node_32 w=0.25 h=0.035
+EFHSegment031 NSection-1_Node_32 NSection-1_Node_33 w=0.25 h=0.035
+EFHSegment032 NSection-1_Node_33 NSection-1_Node_34 w=0.25 h=0.035
+EFHSegment033 NSection-1_Node_34 NSection-1_Node_35 w=0.25 h=0.035
+EFHSegment034 NSection-1_Node_35 NSection-1_Node_36 w=0.25 h=0.035
+EFHSegment035 NSection-1_Node_36 NSection-1_Node_37 w=0.25 h=0.035
+EFHSegment036 NSection-1_Node_37 NSection-1_Node_38 w=0.25 h=0.035
+EFHSegment037 NSection-1_Node_38 NSection-1_Node_39 w=0.25 h=0.035
+EFHSegment038 NSection-1_Node_39 NSection-1_Node_40 w=0.25 h=0.035
+EFHSegment039 NSection-1_Node_40 NSection-1_Node_41 w=0.25 h=0.035
+EFHSegment040 NSection-1_Node_41 NSection-1_Node_42 w=0.25 h=0.035
+EFHSegment041 NSection-1_Node_42 NSection-1_Node_43 w=0.25 h=0.035
+EFHSegment042 NSection-1_Node_43 NSection-1_Node_44 w=0.25 h=0.035
+EFHSegment043 NSection-1_Node_44 NSection-1_Node_45 w=0.25 h=0.035
+EFHSegment044 NSection-1_Node_45 NSection-1_Node_46 w=0.25 h=0.035
+EFHSegment045 NSection-1_Node_46 NSection-1_Node_47 w=0.25 h=0.035
+EFHSegment046 NSection-1_Node_47 NSection-1_Node_48 w=0.25 h=0.035
+EFHSegment047 NSection-1_Node_48 NSection-1_Node_49 w=0.25 h=0.035
+EFHSegment048 NSection-1_Node_49 NSection-1_Node_50 w=0.25 h=0.035
+EFHSegment049 NSection-2_Node_1 NSection-2_Node_2 w=0.25 h=0.035
+EFHSegment050 NSection-2_Node_2 NSection-2_Node_3 w=0.25 h=0.035
+EFHSegment051 NSection-2_Node_3 NSection-2_Node_4 w=0.25 h=0.035
+EFHSegment052 NSection-2_Node_4 NSection-2_Node_5 w=0.25 h=0.035
+EFHSegment053 NSection-2_Node_5 NSection-2_Node_6 w=0.25 h=0.035
+EFHSegment054 NSection-2_Node_6 NSection-2_Node_7 w=0.25 h=0.035
+EFHSegment055 NSection-2_Node_7 NSection-2_Node_8 w=0.25 h=0.035
+EFHSegment056 NSection-2_Node_8 NSection-2_Node_9 w=0.25 h=0.035
+EFHSegment057 NSection-2_Node_9 NSection-2_Node_10 w=0.25 h=0.035
+EFHSegment058 NSection-2_Node_10 NSection-2_Node_11 w=0.25 h=0.035
+EFHSegment059 NSection-2_Node_11 NSection-2_Node_12 w=0.25 h=0.035
+EFHSegment060 NSection-2_Node_12 NSection-2_Node_13 w=0.25 h=0.035
+EFHSegment061 NSection-2_Node_13 NSection-2_Node_14 w=0.25 h=0.035
+EFHSegment062 NSection-2_Node_14 NSection-2_Node_15 w=0.25 h=0.035
+EFHSegment063 NSection-2_Node_15 NSection-2_Node_16 w=0.25 h=0.035
+EFHSegment064 NSection-2_Node_16 NSection-2_Node_17 w=0.25 h=0.035
+EFHSegment065 NSection-2_Node_17 NSection-2_Node_18 w=0.25 h=0.035
+EFHSegment066 NSection-2_Node_18 NSection-2_Node_19 w=0.25 h=0.035
+EFHSegment067 NSection-2_Node_19 NSection-2_Node_20 w=0.25 h=0.035
+EFHSegment068 NSection-2_Node_20 NSection-2_Node_21 w=0.25 h=0.035
+EFHSegment069 NSection-2_Node_21 NSection-2_Node_22 w=0.25 h=0.035
+EFHSegment070 NSection-2_Node_22 NSection-2_Node_23 w=0.25 h=0.035
+EFHSegment071 NSection-2_Node_23 NSection-2_Node_24 w=0.25 h=0.035
+EFHSegment072 NSection-2_Node_24 NSection-2_Node_25 w=0.25 h=0.035
+EFHSegment073 NSection-2_Node_25 NSection-2_Node_26 w=0.25 h=0.035
+EFHSegment074 NSection-2_Node_26 NSection-2_Node_27 w=0.25 h=0.035
+EFHSegment075 NSection-2_Node_27 NSection-2_Node_28 w=0.25 h=0.035
+EFHSegment076 NSection-2_Node_28 NSection-2_Node_29 w=0.25 h=0.035
+EFHSegment077 NSection-2_Node_29 NSection-2_Node_30 w=0.25 h=0.035
+EFHSegment078 NSection-2_Node_30 NSection-2_Node_31 w=0.25 h=0.035
+EFHSegment079 NSection-2_Node_31 NSection-2_Node_32 w=0.25 h=0.035
+EFHSegment080 NSection-2_Node_32 NSection-2_Node_33 w=0.25 h=0.035
+EFHSegment081 NSection-2_Node_33 NSection-2_Node_34 w=0.25 h=0.035
+EFHSegment082 NSection-2_Node_34 NSection-2_Node_35 w=0.25 h=0.035
+EFHSegment083 NSection-2_Node_35 NSection-2_Node_36 w=0.25 h=0.035
+EFHSegment084 NSection-2_Node_36 NSection-2_Node_37 w=0.25 h=0.035
+EFHSegment085 NSection-2_Node_37 NSection-2_Node_38 w=0.25 h=0.035
+EFHSegment086 NSection-2_Node_38 NSection-2_Node_39 w=0.25 h=0.035
+EFHSegment087 NSection-2_Node_39 NSection-2_Node_40 w=0.25 h=0.035
+EFHSegment088 NSection-2_Node_40 NSection-2_Node_41 w=0.25 h=0.035
+EFHSegment089 NSection-2_Node_41 NSection-2_Node_42 w=0.25 h=0.035
+EFHSegment090 NSection-2_Node_42 NSection-2_Node_43 w=0.25 h=0.035
+EFHSegment091 NSection-2_Node_43 NSection-2_Node_44 w=0.25 h=0.035
+EFHSegment092 NSection-2_Node_44 NSection-2_Node_45 w=0.25 h=0.035
+EFHSegment093 NSection-2_Node_45 NSection-2_Node_46 w=0.25 h=0.035
+EFHSegment094 NSection-2_Node_46 NSection-2_Node_47 w=0.25 h=0.035
+EFHSegment095 NSection-2_Node_47 NSection-2_Node_48 w=0.25 h=0.035
+EFHSegment096 NSection-2_Node_48 NSection-2_Node_49 w=0.25 h=0.035
+EFHSegment097 NSection-2_Node_49 NSection-2_Node_50 w=0.25 h=0.035
+EFHSegment098 NSection-3_Node_1 NSection-3_Node_2 w=0.25 h=0.035
+EFHSegment099 NSection-3_Node_2 NSection-3_Node_3 w=0.25 h=0.035
+EFHSegment100 NSection-3_Node_3 NSection-3_Node_4 w=0.25 h=0.035
+EFHSegment101 NSection-3_Node_4 NSection-3_Node_5 w=0.25 h=0.035
+EFHSegment102 NSection-3_Node_5 NSection-3_Node_6 w=0.25 h=0.035
+EFHSegment103 NSection-3_Node_6 NSection-3_Node_7 w=0.25 h=0.035
+EFHSegment104 NSection-3_Node_7 NSection-3_Node_8 w=0.25 h=0.035
+EFHSegment105 NSection-3_Node_8 NSection-3_Node_9 w=0.25 h=0.035
+EFHSegment106 NSection-3_Node_9 NSection-3_Node_10 w=0.25 h=0.035
+EFHSegment107 NSection-3_Node_10 NSection-3_Node_11 w=0.25 h=0.035
+EFHSegment108 NSection-3_Node_11 NSection-3_Node_12 w=0.25 h=0.035
+EFHSegment109 NSection-3_Node_12 NSection-3_Node_13 w=0.25 h=0.035
+EFHSegment110 NSection-3_Node_13 NSection-3_Node_14 w=0.25 h=0.035
+EFHSegment111 NSection-3_Node_14 NSection-3_Node_15 w=0.25 h=0.035
+EFHSegment112 NSection-3_Node_15 NSection-3_Node_16 w=0.25 h=0.035
+EFHSegment113 NSection-3_Node_16 NSection-3_Node_17 w=0.25 h=0.035
+EFHSegment114 NSection-3_Node_17 NSection-3_Node_18 w=0.25 h=0.035
+EFHSegment115 NSection-3_Node_18 NSection-3_Node_19 w=0.25 h=0.035
+EFHSegment116 NSection-3_Node_19 NSection-3_Node_20 w=0.25 h=0.035
+EFHSegment117 NSection-3_Node_20 NSection-3_Node_21 w=0.25 h=0.035
+EFHSegment118 NSection-3_Node_21 NSection-3_Node_22 w=0.25 h=0.035
+EFHSegment119 NSection-3_Node_22 NSection-3_Node_23 w=0.25 h=0.035
+EFHSegment120 NSection-3_Node_23 NSection-3_Node_24 w=0.25 h=0.035
+EFHSegment121 NSection-3_Node_24 NSection-3_Node_25 w=0.25 h=0.035
+EFHSegment122 NSection-3_Node_25 NSection-3_Node_26 w=0.25 h=0.035
+EFHSegment123 NSection-3_Node_26 NSection-3_Node_27 w=0.25 h=0.035
+EFHSegment124 NSection-3_Node_27 NSection-3_Node_28 w=0.25 h=0.035
+EFHSegment125 NSection-3_Node_28 NSection-3_Node_29 w=0.25 h=0.035
+EFHSegment126 NSection-3_Node_29 NSection-3_Node_30 w=0.25 h=0.035
+EFHSegment127 NSection-3_Node_30 NSection-3_Node_31 w=0.25 h=0.035
+EFHSegment128 NSection-3_Node_31 NSection-3_Node_32 w=0.25 h=0.035
+EFHSegment129 NSection-3_Node_32 NSection-3_Node_33 w=0.25 h=0.035
+EFHSegment130 NSection-3_Node_33 NSection-3_Node_34 w=0.25 h=0.035
+EFHSegment131 NSection-3_Node_34 NSection-3_Node_35 w=0.25 h=0.035
+EFHSegment132 NSection-3_Node_35 NSection-3_Node_36 w=0.25 h=0.035
+EFHSegment133 NSection-3_Node_36 NSection-3_Node_37 w=0.25 h=0.035
+EFHSegment134 NSection-3_Node_37 NSection-3_Node_38 w=0.25 h=0.035
+EFHSegment135 NSection-3_Node_38 NSection-3_Node_39 w=0.25 h=0.035
+EFHSegment136 NSection-3_Node_39 NSection-3_Node_40 w=0.25 h=0.035
+EFHSegment137 NSection-3_Node_40 NSection-3_Node_41 w=0.25 h=0.035
+EFHSegment138 NSection-3_Node_41 NSection-3_Node_42 w=0.25 h=0.035
+EFHSegment139 NSection-3_Node_42 NSection-3_Node_43 w=0.25 h=0.035
+EFHSegment140 NSection-3_Node_43 NSection-3_Node_44 w=0.25 h=0.035
+EFHSegment141 NSection-3_Node_44 NSection-3_Node_45 w=0.25 h=0.035
+EFHSegment142 NSection-3_Node_45 NSection-3_Node_46 w=0.25 h=0.035
+EFHSegment143 NSection-3_Node_46 NSection-3_Node_47 w=0.25 h=0.035
+EFHSegment144 NSection-3_Node_47 NSection-3_Node_48 w=0.25 h=0.035
+EFHSegment145 NSection-3_Node_48 NSection-3_Node_49 w=0.25 h=0.035
+EFHSegment146 NSection-3_Node_49 NSection-3_Node_50 w=0.25 h=0.035
+EFHSegment147 NSection-4_Node_1 NSection-4_Node_2 w=0.25 h=0.035
+EFHSegment148 NSection-4_Node_2 NSection-4_Node_3 w=0.25 h=0.035
+EFHSegment149 NSection-4_Node_3 NSection-4_Node_4 w=0.25 h=0.035
+EFHSegment150 NSection-4_Node_4 NSection-4_Node_5 w=0.25 h=0.035
+EFHSegment151 NSection-4_Node_5 NSection-4_Node_6 w=0.25 h=0.035
+EFHSegment152 NSection-4_Node_6 NSection-4_Node_7 w=0.25 h=0.035
+EFHSegment153 NSection-4_Node_7 NSection-4_Node_8 w=0.25 h=0.035
+EFHSegment154 NSection-4_Node_8 NSection-4_Node_9 w=0.25 h=0.035
+EFHSegment155 NSection-4_Node_9 NSection-4_Node_10 w=0.25 h=0.035
+EFHSegment156 NSection-4_Node_10 NSection-4_Node_11 w=0.25 h=0.035
+EFHSegment157 NSection-4_Node_11 NSection-4_Node_12 w=0.25 h=0.035
+EFHSegment158 NSection-4_Node_12 NSection-4_Node_13 w=0.25 h=0.035
+EFHSegment159 NSection-4_Node_13 NSection-4_Node_14 w=0.25 h=0.035
+EFHSegment160 NSection-4_Node_14 NSection-4_Node_15 w=0.25 h=0.035
+EFHSegment161 NSection-4_Node_15 NSection-4_Node_16 w=0.25 h=0.035
+EFHSegment162 NSection-4_Node_16 NSection-4_Node_17 w=0.25 h=0.035
+EFHSegment163 NSection-4_Node_17 NSection-4_Node_18 w=0.25 h=0.035
+EFHSegment164 NSection-4_Node_18 NSection-4_Node_19 w=0.25 h=0.035
+EFHSegment165 NSection-4_Node_19 NSection-4_Node_20 w=0.25 h=0.035
+EFHSegment166 NSection-4_Node_20 NSection-4_Node_21 w=0.25 h=0.035
+EFHSegment167 NSection-4_Node_21 NSection-4_Node_22 w=0.25 h=0.035
+EFHSegment168 NSection-4_Node_22 NSection-4_Node_23 w=0.25 h=0.035
+EFHSegment169 NSection-4_Node_23 NSection-4_Node_24 w=0.25 h=0.035
+EFHSegment170 NSection-4_Node_24 NSection-4_Node_25 w=0.25 h=0.035
+EFHSegment171 NSection-4_Node_25 NSection-4_Node_26 w=0.25 h=0.035
+EFHSegment172 NSection-4_Node_26 NSection-4_Node_27 w=0.25 h=0.035
+EFHSegment173 NSection-4_Node_27 NSection-4_Node_28 w=0.25 h=0.035
+EFHSegment174 NSection-4_Node_28 NSection-4_Node_29 w=0.25 h=0.035
+EFHSegment175 NSection-4_Node_29 NSection-4_Node_30 w=0.25 h=0.035
+EFHSegment176 NSection-4_Node_30 NSection-4_Node_31 w=0.25 h=0.035
+EFHSegment177 NSection-4_Node_31 NSection-4_Node_32 w=0.25 h=0.035
+EFHSegment178 NSection-4_Node_32 NSection-4_Node_33 w=0.25 h=0.035
+EFHSegment179 NSection-4_Node_33 NSection-4_Node_34 w=0.25 h=0.035
+EFHSegment180 NSection-4_Node_34 NSection-4_Node_35 w=0.25 h=0.035
+EFHSegment181 NSection-4_Node_35 NSection-4_Node_36 w=0.25 h=0.035
+EFHSegment182 NSection-4_Node_36 NSection-4_Node_37 w=0.25 h=0.035
+EFHSegment183 NSection-4_Node_37 NSection-4_Node_38 w=0.25 h=0.035
+EFHSegment184 NSection-4_Node_38 NSection-4_Node_39 w=0.25 h=0.035
+EFHSegment185 NSection-4_Node_39 NSection-4_Node_40 w=0.25 h=0.035
+EFHSegment186 NSection-4_Node_40 NSection-4_Node_41 w=0.25 h=0.035
+EFHSegment187 NSection-4_Node_41 NSection-4_Node_42 w=0.25 h=0.035
+EFHSegment188 NSection-4_Node_42 NSection-4_Node_43 w=0.25 h=0.035
+EFHSegment189 NSection-4_Node_43 NSection-4_Node_44 w=0.25 h=0.035
+EFHSegment190 NSection-4_Node_44 NSection-4_Node_45 w=0.25 h=0.035
+EFHSegment191 NSection-4_Node_45 NSection-4_Node_46 w=0.25 h=0.035
+EFHSegment192 NSection-4_Node_46 NSection-4_Node_47 w=0.25 h=0.035
+EFHSegment193 NSection-4_Node_47 NSection-4_Node_48 w=0.25 h=0.035
+EFHSegment194 NSection-4_Node_48 NSection-4_Node_49 w=0.25 h=0.035
+EFHSegment195 NSection-4_Node_49 NSection-4_Node_50 w=0.25 h=0.035
+
+* Ports
+.external NSection-1_Node_1 NSection-1_Node_50
+.external NSection-2_Node_1 NSection-2_Node_50
+.external NSection-3_Node_1 NSection-3_Node_50
+.external NSection-4_Node_1 NSection-4_Node_50
+
+.freq fmin=1.0 fmax=1000000000.0 ndec=1.0
+
+.end
