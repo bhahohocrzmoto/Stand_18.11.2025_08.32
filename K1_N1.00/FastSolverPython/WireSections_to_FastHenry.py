@@ -160,6 +160,16 @@ class SectionGeometry:
     segments: List[Tuple[str, str, float, float]]
     port: Tuple[str, str]
 
+
+@dataclass
+class SectionGeometry:
+    """Small container describing one section's FastHenry primitives."""
+
+    name: str
+    nodes: List[Tuple[str, float, float, float]]
+    segments: List[Tuple[str, str, float, float]]
+    port: Tuple[str, str]
+
 def units_to_sigma(units):
     """
     Pick a reasonable default copper conductivity in FastHenry units.
