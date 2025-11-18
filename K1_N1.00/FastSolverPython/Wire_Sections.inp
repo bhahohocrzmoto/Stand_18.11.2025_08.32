@@ -425,6 +425,6 @@ E_S4_49 NSection-4_Node_49 NSection-4_Node_50 w=0.25 h=0.035
 .external NSection-4_Node_1 NSection-4_Node_50   * Section-4_port_4
 
 * --- Frequency sweep ---
-.freq fmin=1 fmax=1e+09 ndec=1.0
+.freq fmin=1000 fmax=1000 ndec=1.0
 
 .end
