@@ -215,6 +215,15 @@ def make_node_prefix(sec_name):
         return sec.replace(" ", "_")
 
 
+def make_node_name(sec_name, idx):
+    """Return a FastHenry node label similar to FreeCAD's convention."""
+
+    safe_section = sec_name.strip().replace(" ", "_")
+    # FastHenry expects node identifiers to start with 'N'.  Matching
+    # FreeCAD's Workbench makes it easy to cross-check the generated input.
+    return f"N{safe_section}_Node_{idx}"
+
+
 # --------------------------------------------------------------------------- #
 # ------------------------ FASTHENRY WRITER --------------------------------- #
 # --------------------------------------------------------------------------- #
@@ -228,6 +237,11 @@ def write_fasthenry_input(
     sigma=None,
     freq_min=1e3,
     freq_max=1e3,
+    freq_decades=1.0,
+    nhinc=1,
+    nwinc=1,
+    rh=2,
+    rw=2,
 ):
     """
     Write a FastHenry2-compatible input file.
@@ -246,6 +260,12 @@ def write_fasthenry_input(
         Conductivity; if None, we use units_to_sigma(units).
     freq_min, freq_max : float
         Frequency sweep for .freq card (Hz).
+    freq_decades : float
+        Number of points-per-decade for .freq (FastHenry's ndec parameter).
+    nhinc, nwinc : int
+        Number of subdivisions for the height/width directions.
+    rh, rw : int
+        Aspect ratio hints (FastHenry parameters rh/rw).
     """
     out_path = Path(out_path)
     units = units.upper()
@@ -265,13 +285,17 @@ def write_fasthenry_input(
             f.write("* Per-section width/height overrides:\n")
             for s_name, (w, h) in SECTION_WH.items():
                 f.write(f"*   {s_name}: w={w}, h={h}\n")
-        f.write("* Adjust .external definitions, .freq, and sigma as needed.\n\n")
+        f.write("* Adjust .external definitions, .freq, sigma and meshing as needed.\n\n")
 
-        # Units card
-        f.write(f".Units {units}\n")
+        # Units card (FastHenry is case-insensitive but FreeCAD writes lowercase)
+        f.write(f".units {units.lower()}\n\n")
 
-        # Default material properties
-        f.write(f".Default sigma={sigma:.6g}\n\n")
+        # Default material/meshing parameters.  Including nhinc/nwinc/rh/rw makes
+        # the output align with the known-good file the user supplied.
+        f.write(
+            ".default "
+            f"sigma={sigma:.6g} nhinc={nhinc} nwinc={nwinc} rh={rh} rw={rw}\n\n"
+        )
 
         # We'll collect (start_node, end_node) for each section to define ports
         ports = []
@@ -297,15 +321,10 @@ def write_fasthenry_input(
             node_names = []
             for idx, x, y, z, line_no in pts:
                 # FastHenry expects the same node identifiers when they are
-                # referenced later in segment/port definitions.  The original
-                # implementation wrote node definitions prefixed with an
-                # additional 'N' (e.g. nodes were named `NS1N1` while segments
-                # connected `S1N1`).  As a consequence FastHenry reported
-                # "No node read in yet named ..." for every element.  We keep
-                # the concise "S{section}N{index}" naming convention but use it
-                # consistently for node definitions and the segment/port
-                # references.
-                node_name = f"{prefix}N{idx}"  # e.g. S1N1, S1N2, ...
+                # referenced later in segment/port definitions.  Prefixing the
+                # label with 'N' matches FreeCAD's format and keeps FastHenry's
+                # parser happy.
+                node_name = make_node_name(sec_name, idx)
                 node_names.append(node_name)
                 f.write(
                     f"{node_name} x={x:.8g} y={y:.8g} z={z:.8g}  "
@@ -327,22 +346,24 @@ def write_fasthenry_input(
             f.write("\n")
 
             # Store port info: first and last node in this section
-            ports.append((prefix, node_names[0], node_names[-1]))
+            ports.append((sec_name, node_names[0], node_names[-1]))
 
         # ------------------------------------------------------------------
         # Ports
         # ------------------------------------------------------------------
         f.write("* --- Ports (.external) ---\n")
-        for idx, (prefix, n_start, n_end) in enumerate(ports, start=1):
+        for idx, (sec_name, n_start, n_end) in enumerate(ports, start=1):
             # One port per section: you can later adjust/merge these in SPICE.
-            f.write(f".external {n_start} {n_end}   * {prefix}_port_{idx}\n")
+            f.write(f".external {n_start} {n_end}   * {sec_name}_port_{idx}\n")
         f.write("\n")
 
         # ------------------------------------------------------------------
         # Frequency sweep
         # ------------------------------------------------------------------
         f.write("* --- Frequency sweep ---\n")
-        f.write(f".freq fmin={freq_min:.6g} fmax={freq_max:.6g} ndec=1\n\n")
+        f.write(
+            f".freq fmin={freq_min:.6g} fmax={freq_max:.6g} ndec={freq_decades}\n\n"
+        )
 
         # Done
         f.write(".end\n")
@@ -405,6 +426,36 @@ def main():
         default=1e3,
         help="Maximum frequency in Hz for .freq (default: 1e3)",
     )
+    parser.add_argument(
+        "--freq-decades",
+        type=float,
+        default=1.0,
+        help="Points per decade for .freq ndec parameter (default: 1.0)",
+    )
+    parser.add_argument(
+        "--nhinc",
+        type=int,
+        default=1,
+        help="Number of subdivisions along trace thickness (FastHenry nhinc)",
+    )
+    parser.add_argument(
+        "--nwinc",
+        type=int,
+        default=1,
+        help="Number of subdivisions along trace width (FastHenry nwinc)",
+    )
+    parser.add_argument(
+        "--rh",
+        type=int,
+        default=2,
+        help="Aspect-ratio control rh passed to .default (default: 2)",
+    )
+    parser.add_argument(
+        "--rw",
+        type=int,
+        default=2,
+        help="Aspect-ratio control rw passed to .default (default: 2)",
+    )
 
     args = parser.parse_args()
 
@@ -433,6 +484,11 @@ def main():
         sigma=args.sigma,
         freq_min=args.fmin,
         freq_max=args.fmax,
+        freq_decades=args.freq_decades,
+        nhinc=args.nhinc,
+        nwinc=args.nwinc,
+        rh=args.rh,
+        rw=args.rw,
     )
 
     print(f"[OK] Written FastHenry2 input to: {out_path}")
