@@ -27,7 +27,9 @@ This script does NOT depend on FreeCAD or EM; it's pure Python.
 """
 
 import argparse
+from dataclasses import dataclass
 from pathlib import Path
+from typing import List, Tuple
 
 # --------------------------------------------------------------------------- #
 # --------------------------- CONFIGURATION --------------------------------- #
@@ -147,6 +149,16 @@ def parse_wire_sections(txt_path):
 # --------------------------------------------------------------------------- #
 # ------------------------------ HELPERS ------------------------------------ #
 # --------------------------------------------------------------------------- #
+
+
+@dataclass
+class SectionGeometry:
+    """Small container describing one section's FastHenry primitives."""
+
+    name: str
+    nodes: List[Tuple[str, float, float, float]]
+    segments: List[Tuple[str, str, float, float]]
+    port: Tuple[str, str]
 
 def units_to_sigma(units):
     """

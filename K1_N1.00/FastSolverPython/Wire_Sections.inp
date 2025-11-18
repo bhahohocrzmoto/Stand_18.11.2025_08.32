@@ -8,7 +8,7 @@
 
 .default sigma=58000 nhinc=1 nwinc=1 rh=2 rw=2
 
-* --- Nodes and segments ---
+.default sigma=58000.0 nhinc=1 nwinc=1 rh=2 rw=2
 
 * Section: Section-1 (prefix: S1), w=0.25, h=0.035
 NSection-1_Node_1 x=24.375 y=0 z=0  * src_line=3
