@@ -235,6 +235,15 @@ def format_coord(value, force_decimal=False):
     return text
 
 
+def make_node_name(sec_name, idx):
+    """Return a FastHenry node label similar to FreeCAD's convention."""
+
+    safe_section = sec_name.strip().replace(" ", "_")
+    # FastHenry expects node identifiers to start with 'N'.  Matching
+    # FreeCAD's Workbench makes it easy to cross-check the generated input.
+    return f"N{safe_section}_Node_{idx}"
+
+
 # --------------------------------------------------------------------------- #
 # ------------------------ FASTHENRY WRITER --------------------------------- #
 # --------------------------------------------------------------------------- #
@@ -246,8 +255,8 @@ def write_fasthenry_input(
     default_width,
     default_height,
     sigma=None,
-    freq_min=1.0,
-    freq_max=1e9,
+    freq_min=1e3,
+    freq_max=1e3,
     freq_decades=1.0,
     nhinc=1,
     nwinc=1,
@@ -284,73 +293,100 @@ def write_fasthenry_input(
     if sigma is None:
         sigma = units_to_sigma(units)
 
-    # We'll collect formatted nodes, segments and ports so that we can emit
-    # blocks identical to FreeCAD's FastHenry exporter.
-    all_nodes = []
-    segments = []
-    ports = []
+    with out_path.open("w", encoding="utf-8") as f:
+        # ------------------------------------------------------------------
+        # Header
+        # ------------------------------------------------------------------
+        f.write("* FastHenry2 input generated from Wire_Sections.txt\n")
+        f.write(f"* Units: {units}\n")
+        f.write(f"* Default segment width  = {default_width}\n")
+        f.write(f"* Default segment height = {default_height}\n")
+        if SECTION_WH:
+            f.write("* Per-section width/height overrides:\n")
+            for s_name, (w, h) in SECTION_WH.items():
+                f.write(f"*   {s_name}: w={w}, h={h}\n")
+        f.write("* Adjust .external definitions, .freq, sigma and meshing as needed.\n\n")
 
-    for sec_name in sorted(sections.keys(), key=section_sort_key):
-        pts = sections[sec_name]
-        if len(pts) < 2:
-            continue
+        # Units card (FastHenry is case-insensitive but FreeCAD writes lowercase)
+        f.write(f".units {units.lower()}\n\n")
 
-        w_sec, h_sec = SECTION_WH.get(sec_name, (default_width, default_height))
-        node_names = []
-        for idx, x, y, z, _line_no in pts:
-            node_name = make_node_name(sec_name, idx)
-            node_names.append(node_name)
-            all_nodes.append((node_name, x, y, z))
-
-        for seg_idx in range(len(node_names) - 1):
-            segments.append((node_names[seg_idx], node_names[seg_idx + 1], w_sec, h_sec))
-
-        ports.append((node_names[0], node_names[-1]))
-
-    with out_path.open("w", encoding="utf-8", newline="") as f:
-        def write_line(text=""):
-            """Emit a CRLF-terminated line to match FreeCAD's deck byte-for-byte."""
-
-            f.write(text + "\r\n")
-
-        write_line("* FastHenry input file created using FreeCAD's ElectroMagnetic Workbench")
-        write_line("* See http://www.freecad.org, http://www.fastfieldsolvers.com and http://epc-co.com")
-        write_line()
-        write_line(f".units {units.lower()}")
-        write_line()
-        write_line(
-            f".default sigma={format_coord(sigma, force_decimal=True)} nhinc={nhinc} "
-            f"nwinc={nwinc} rh={rh} rw={rw}"
+        # Default material/meshing parameters.  Including nhinc/nwinc/rh/rw makes
+        # the output align with the known-good file the user supplied.
+        f.write(
+            ".default "
+            f"sigma={sigma:.6g} nhinc={nhinc} nwinc={nwinc} rh={rh} rw={rw}\n\n"
         )
-        write_line()
-        write_line("* Nodes")
-        for node_name, x, y, z in all_nodes:
-            write_line(
-                f"{node_name} x={format_coord(x, True)} y={format_coord(y, True)} "
-                f"z={format_coord(z, True)}"
-            )
 
-        write_line()
-        write_line("* Segments")
-        for idx, (n1, n2, w_val, h_val) in enumerate(segments):
-            if idx == 0:
-                elem_name = "EFHSegment"
-            else:
-                elem_name = f"EFHSegment{idx:03d}"
-            write_line(f"{elem_name} {n1} {n2} w={format_coord(w_val)} h={format_coord(h_val)}")
+        # We'll collect (start_node, end_node) for each section to define ports
+        ports = []
 
-        write_line()
-        write_line("* Ports")
-        for n_start, n_end in ports:
-            write_line(f".external {n_start} {n_end}")
+        # ------------------------------------------------------------------
+        # Nodes and segments
+        # ------------------------------------------------------------------
+        f.write("* --- Nodes and segments ---\n\n")
 
-        write_line()
-        write_line(
-            f".freq fmin={format_coord(freq_min, True)} "
-            f"fmax={format_coord(freq_max, True)} ndec={format_coord(freq_decades, True)}"
+        for sec_name in sorted(sections.keys(), key=section_sort_key):
+            pts = sections[sec_name]
+            if len(pts) < 2:
+                # Not enough points to form even one segment
+                continue
+
+            # Pick per-section width/height, or fall back to defaults
+            w_sec, h_sec = SECTION_WH.get(sec_name, (default_width, default_height))
+
+            prefix = make_node_prefix(sec_name)
+            f.write(f"* Section: {sec_name} (prefix: {prefix}), w={w_sec}, h={h_sec}\n")
+
+            # Create node names for each point in this section
+            node_names = []
+            for idx, x, y, z, line_no in pts:
+                # FastHenry expects the same node identifiers when they are
+                # referenced later in segment/port definitions.  Prefixing the
+                # label with 'N' matches FreeCAD's format and keeps FastHenry's
+                # parser happy.
+                node_name = make_node_name(sec_name, idx)
+                node_names.append(node_name)
+                f.write(
+                    f"{node_name} x={x:.8g} y={y:.8g} z={z:.8g}  "
+                    f"* src_line={line_no}\n"
+                )
+
+            f.write("\n")
+
+            # Connect consecutive nodes with segments
+            for seg_idx in range(len(node_names) - 1):
+                n1 = node_names[seg_idx]
+                n2 = node_names[seg_idx + 1]
+                elem_name = f"E_{prefix}_{seg_idx+1}"
+                f.write(
+                    f"{elem_name} {n1} {n2} "
+                    f"w={w_sec:.8g} h={h_sec:.8g}\n"
+                )
+
+            f.write("\n")
+
+            # Store port info: first and last node in this section
+            ports.append((sec_name, node_names[0], node_names[-1]))
+
+        # ------------------------------------------------------------------
+        # Ports
+        # ------------------------------------------------------------------
+        f.write("* --- Ports (.external) ---\n")
+        for idx, (sec_name, n_start, n_end) in enumerate(ports, start=1):
+            # One port per section: you can later adjust/merge these in SPICE.
+            f.write(f".external {n_start} {n_end}   * {sec_name}_port_{idx}\n")
+        f.write("\n")
+
+        # ------------------------------------------------------------------
+        # Frequency sweep
+        # ------------------------------------------------------------------
+        f.write("* --- Frequency sweep ---\n")
+        f.write(
+            f".freq fmin={freq_min:.6g} fmax={freq_max:.6g} ndec={freq_decades}\n\n"
         )
-        write_line()
-        write_line(".end")
+
+        # Done
+        f.write(".end\n")
 
 
 # --------------------------------------------------------------------------- #
@@ -401,14 +437,14 @@ def main():
     parser.add_argument(
         "--fmin",
         type=float,
-        default=1.0,
-        help="Minimum frequency in Hz for .freq (default: 1.0)",
+        default=1e3,
+        help="Minimum frequency in Hz for .freq (default: 1e3)",
     )
     parser.add_argument(
         "--fmax",
         type=float,
-        default=1e9,
-        help="Maximum frequency in Hz for .freq (default: 1e9)",
+        default=1e3,
+        help="Maximum frequency in Hz for .freq (default: 1e3)",
     )
     parser.add_argument(
         "--freq-decades",
