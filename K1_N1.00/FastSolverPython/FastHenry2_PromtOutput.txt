@@ -4,7 +4,7 @@ FastHenry2 Windows porting and modifications, version 3.6
     (c) 1998, 2015 by Enrico Di Lorenzo, www.fastfieldsolvers.com
 
 Running FastHenry 3.0 (29Sep96)
-  Date: Tue Nov 18 08:31:42 2025
+  Date: Tue Nov 18 09:34:58 2025
 Solution technique: ITERATIVE
 Matrix vector product method: MULTIPOLE
   Order of expansion: 2
@@ -15,1620 +15,203 @@ Title:
 * FastHenry2 input generated from Wire_Sections.txt
 
 all lengths multiplied by 0.001 to convert to meters
-What is the following line? 
-s1n1 x=24.375 y=0 z=0  * src_line=3
-
-What is the following line? 
-s1n2 x=24.185002 y=3.1183107 z=0  * src_line=4
-
-What is the following line? 
-s1n3 x=23.597553 y=6.1880071 z=0  * src_line=5
-
-What is the following line? 
-s1n4 x=22.621971 y=9.158621 z=0  * src_line=6
-
-What is the following line? 
-s1n5 x=21.273957 y=11.98127 z=0  * src_line=7
-
-What is the following line? 
-s1n6 x=19.575345 y=14.60946 z=0  * src_line=8
-
-What is the following line? 
-s1n7 x=17.553746 y=16.999855 z=0  * src_line=9
-
-What is the following line? 
-s1n8 x=15.242099 y=19.112987 z=0  * src_line=10
-
-What is the following line? 
-s1n9 x=12.678137 y=20.913912 z=0  * src_line=11
-
-What is the following line? 
-s1n10 x=9.903768 y=22.372784 z=0  * src_line=12
-
-What is the following line? 
-s1n11 x=6.9643933 y=23.465352 z=0  * src_line=13
-
-What is the following line? 
-s1n12 x=3.9081617 y=24.173362 z=0  * src_line=14
-
-What is the following line? 
-s1n13 x=0.78518189 y=24.484863 z=0  * src_line=15
-
-What is the following line? 
-s1n14 x=-2.353299 y=24.394406 z=0  * src_line=16
-
-What is the following line? 
-s1n15 x=-5.4557365 y=23.903143 z=0  * src_line=17
-
-What is the following line? 
-s1n16 x=-8.4711352 y=23.018811 z=0  * src_line=18
-
-What is the following line? 
-s1n17 x=-11.349887 y=21.755609 z=0  * src_line=19
-
-What is the following line? 
-s1n18 x=-14.044588 y=20.133973 z=0  * src_line=20
-
-What is the following line? 
-s1n19 x=-16.510818 y=18.180246 z=0  * src_line=21
-
-What is the following line? 
-s1n20 x=-18.707873 y=15.926244 z=0  * src_line=22
-
-What is the following line? 
-s1n21 x=-20.599436 y=13.408747 z=0  * src_line=23
-
-What is the following line? 
-s1n22 x=-22.154181 y=10.668891 z=0  * src_line=24
-
-What is the following line? 
-s1n23 x=-23.346287 y=7.7515014 z=0  * src_line=25
-
-What is the following line? 
-s1n24 x=-24.15587 y=4.7043553 z=0  * src_line=26
-
-What is the following line? 
-s1n25 x=-24.569314 y=1.5774023 z=0  * src_line=27
-
-What is the following line? 
-s1n26 x=-24.579497 y=-1.5780561 z=0  * src_line=28
-
-What is the following line? 
-s1n27 x=-24.185918 y=-4.7102071 z=0  * src_line=29
-
-What is the following line? 
-s1n28 x=-23.394708 y=-7.7675783 z=0  * src_line=30
-
-What is the following line? 
-s1n29 x=-22.218536 y=-10.699883 z=0  * src_line=31
-
-What is the following line? 
-s1n30 x=-20.676403 y=-13.458847 z=0  * src_line=32
-
-What is the following line? 
-s1n31 x=-18.793341 y=-15.999004 z=0  * src_line=33
-
-What is the following line? 
-s1n32 x=-16.600001 y=-18.278446 z=0  * src_line=34
-
-What is the following line? 
-s1n33 x=-14.132157 y=-20.25951 z=0  * src_line=35
-
-What is the following line? 
-s1n34 x=-11.430124 y=-21.909407 z=0  * src_line=36
-
-What is the following line? 
-s1n35 x=-8.5380937 y=-23.200759 z=0  * src_line=37
-
-What is the following line? 
-s1n36 x=-5.5034195 y=-24.112056 z=0  * src_line=38
-
-What is the following line? 
-s1n37 x=-2.375835 y=-24.628015 z=0  * src_line=39
-
-What is the following line? 
-s1n38 x=0.79335831 y=-24.739834 z=0  * src_line=40
-
-What is the following line? 
-s1n39 x=3.9521331 y=-24.445341 z=0  * src_line=41
-
-What is the following line? 
-s1n40 x=7.0485903 y=-23.74904 z=0  * src_line=42
-
-What is the following line? 
-s1n41 x=10.031812 y=-22.662037 z=0  * src_line=43
-
-What is the following line? 
-s1n42 x=12.852697 y=-21.201869 z=0  * src_line=44
-
-What is the following line? 
-s1n43 x=15.464774 y=-19.392213 z=0  * src_line=45
-
-What is the following line? 
-s1n44 x=17.82496 y=-17.262511 z=0  * src_line=46
-
-What is the following line? 
-s1n45 x=19.894275 y=-14.847484 z=0  * src_line=47
-
-What is the following line? 
-s1n46 x=21.638489 y=-12.18657 z=0  * src_line=48
-
-What is the following line? 
-s1n47 x=23.028679 y=-9.323279 z=0  * src_line=49
-
-What is the following line? 
-s1n48 x=24.041719 y=-6.3044811 z=0  * src_line=50
-
-What is the following line? 
-s1n49 x=24.660656 y=-3.1796395 z=0  * src_line=51
-
-What is the following line? 
-s1n50 x=24.875 y=-0 z=0  * src_line=52
-
-No node read in yet named s1n1
-No node read in yet named s1n2
-No node read in yet named s1n3
-No node read in yet named s1n4
-No node read in yet named s1n5
-No node read in yet named s1n6
-No node read in yet named s1n7
-No node read in yet named s1n8
-No node read in yet named s1n9
-No node read in yet named s1n10
-No node read in yet named s1n11
-No node read in yet named s1n12
-No node read in yet named s1n13
-No node read in yet named s1n14
-No node read in yet named s1n15
-No node read in yet named s1n16
-No node read in yet named s1n17
-No node read in yet named s1n18
-No node read in yet named s1n19
-No node read in yet named s1n20
-No node read in yet named s1n21
-No node read in yet named s1n22
-No node read in yet named s1n23
-No node read in yet named s1n24
-No node read in yet named s1n25
-No node read in yet named s1n26
-No node read in yet named s1n27
-No node read in yet named s1n28
-No node read in yet named s1n29
-No node read in yet named s1n30
-No node read in yet named s1n31
-No node read in yet named s1n32
-No node read in yet named s1n33
-No node read in yet named s1n34
-No node read in yet named s1n35
-No node read in yet named s1n36
-No node read in yet named s1n37
-No node read in yet named s1n38
-No node read in yet named s1n39
-No node read in yet named s1n40
-No node read in yet named s1n41
-No node read in yet named s1n42
-No node read in yet named s1n43
-No node read in yet named s1n44
-No node read in yet named s1n45
-No node read in yet named s1n46
-No node read in yet named s1n47
-No node read in yet named s1n48
-No node read in yet named s1n49
-What is the following line? 
-s2n1 x=24.875 y=0 z=1  * src_line=53
-
-What is the following line? 
-s2n2 x=24.660656 y=3.1796395 z=1  * src_line=54
-
-What is the following line? 
-s2n3 x=24.041719 y=6.3044811 z=1  * src_line=55
-
-What is the following line? 
-s2n4 x=23.028679 y=9.323279 z=1  * src_line=56
-
-What is the following line? 
-s2n5 x=21.638489 y=12.18657 z=1  * src_line=57
-
-What is the following line? 
-s2n6 x=19.894275 y=14.847484 z=1  * src_line=58
-
-What is the following line? 
-s2n7 x=17.82496 y=17.262511 z=1  * src_line=59
-
-What is the following line? 
-s2n8 x=15.464774 y=19.392213 z=1  * src_line=60
-
-What is the following line? 
-s2n9 x=12.852697 y=21.201869 z=1  * src_line=61
-
-What is the following line? 
-s2n10 x=10.031812 y=22.662037 z=1  * src_line=62
-
-What is the following line? 
-s2n11 x=7.0485903 y=23.74904 z=1  * src_line=63
-
-What is the following line? 
-s2n12 x=3.9521331 y=24.445341 z=1  * src_line=64
-
-What is the following line? 
-s2n13 x=0.79335831 y=24.739834 z=1  * src_line=65
-
-What is the following line? 
-s2n14 x=-2.375835 y=24.628015 z=1  * src_line=66
-
-What is the following line? 
-s2n15 x=-5.5034195 y=24.112056 z=1  * src_line=67
-
-What is the following line? 
-s2n16 x=-8.5380937 y=23.200759 z=1  * src_line=68
-
-What is the following line? 
-s2n17 x=-11.430124 y=21.909407 z=1  * src_line=69
-
-What is the following line? 
-s2n18 x=-14.132157 y=20.25951 z=1  * src_line=70
-
-What is the following line? 
-s2n19 x=-16.600001 y=18.278446 z=1  * src_line=71
-
-What is the following line? 
-s2n20 x=-18.793341 y=15.999004 z=1  * src_line=72
-
-What is the following line? 
-s2n21 x=-20.676403 y=13.458847 z=1  * src_line=73
-
-What is the following line? 
-s2n22 x=-22.218536 y=10.699883 z=1  * src_line=74
-
-What is the following line? 
-s2n23 x=-23.394708 y=7.7675783 z=1  * src_line=75
-
-What is the following line? 
-s2n24 x=-24.185918 y=4.7102071 z=1  * src_line=76
-
-What is the following line? 
-s2n25 x=-24.579497 y=1.5780561 z=1  * src_line=77
-
-What is the following line? 
-s2n26 x=-24.569314 y=-1.5774023 z=1  * src_line=78
-
-What is the following line? 
-s2n27 x=-24.15587 y=-4.7043553 z=1  * src_line=79
-
-What is the following line? 
-s2n28 x=-23.346287 y=-7.7515014 z=1  * src_line=80
-
-What is the following line? 
-s2n29 x=-22.154181 y=-10.668891 z=1  * src_line=81
-
-What is the following line? 
-s2n30 x=-20.599436 y=-13.408747 z=1  * src_line=82
-
-What is the following line? 
-s2n31 x=-18.707873 y=-15.926244 z=1  * src_line=83
-
-What is the following line? 
-s2n32 x=-16.510818 y=-18.180246 z=1  * src_line=84
-
-What is the following line? 
-s2n33 x=-14.044588 y=-20.133973 z=1  * src_line=85
-
-What is the following line? 
-s2n34 x=-11.349887 y=-21.755609 z=1  * src_line=86
-
-What is the following line? 
-s2n35 x=-8.4711352 y=-23.018811 z=1  * src_line=87
-
-What is the following line? 
-s2n36 x=-5.4557365 y=-23.903143 z=1  * src_line=88
-
-What is the following line? 
-s2n37 x=-2.353299 y=-24.394406 z=1  * src_line=89
-
-What is the following line? 
-s2n38 x=0.78518189 y=-24.484863 z=1  * src_line=90
-
-What is the following line? 
-s2n39 x=3.9081617 y=-24.173362 z=1  * src_line=91
-
-What is the following line? 
-s2n40 x=6.9643933 y=-23.465352 z=1  * src_line=92
-
-What is the following line? 
-s2n41 x=9.903768 y=-22.372784 z=1  * src_line=93
-
-What is the following line? 
-s2n42 x=12.678137 y=-20.913912 z=1  * src_line=94
-
-What is the following line? 
-s2n43 x=15.242099 y=-19.112987 z=1  * src_line=95
-
-What is the following line? 
-s2n44 x=17.553746 y=-16.999855 z=1  * src_line=96
-
-What is the following line? 
-s2n45 x=19.575345 y=-14.60946 z=1  * src_line=97
-
-What is the following line? 
-s2n46 x=21.273957 y=-11.98127 z=1  * src_line=98
-
-What is the following line? 
-s2n47 x=22.621971 y=-9.158621 z=1  * src_line=99
-
-What is the following line? 
-s2n48 x=23.597553 y=-6.1880071 z=1  * src_line=100
-
-What is the following line? 
-s2n49 x=24.185002 y=-3.1183107 z=1  * src_line=101
-
-What is the following line? 
-s2n50 x=24.375 y=-0 z=1  * src_line=102
-
-No node read in yet named s2n1
-No node read in yet named s2n2
-No node read in yet named s2n3
-No node read in yet named s2n4
-No node read in yet named s2n5
-No node read in yet named s2n6
-No node read in yet named s2n7
-No node read in yet named s2n8
-No node read in yet named s2n9
-No node read in yet named s2n10
-No node read in yet named s2n11
-No node read in yet named s2n12
-No node read in yet named s2n13
-No node read in yet named s2n14
-No node read in yet named s2n15
-No node read in yet named s2n16
-No node read in yet named s2n17
-No node read in yet named s2n18
-No node read in yet named s2n19
-No node read in yet named s2n20
-No node read in yet named s2n21
-No node read in yet named s2n22
-No node read in yet named s2n23
-No node read in yet named s2n24
-No node read in yet named s2n25
-No node read in yet named s2n26
-No node read in yet named s2n27
-No node read in yet named s2n28
-No node read in yet named s2n29
-No node read in yet named s2n30
-No node read in yet named s2n31
-No node read in yet named s2n32
-No node read in yet named s2n33
-No node read in yet named s2n34
-No node read in yet named s2n35
-No node read in yet named s2n36
-No node read in yet named s2n37
-No node read in yet named s2n38
-No node read in yet named s2n39
-No node read in yet named s2n40
-No node read in yet named s2n41
-No node read in yet named s2n42
-No node read in yet named s2n43
-No node read in yet named s2n44
-No node read in yet named s2n45
-No node read in yet named s2n46
-No node read in yet named s2n47
-No node read in yet named s2n48
-No node read in yet named s2n49
-What is the following line? 
-s3n1 x=24.375 y=0 z=2  * src_line=103
-
-What is the following line? 
-s3n2 x=24.185002 y=3.1183107 z=2  * src_line=104
-
-What is the following line? 
-s3n3 x=23.597553 y=6.1880071 z=2  * src_line=105
-
-What is the following line? 
-s3n4 x=22.621971 y=9.158621 z=2  * src_line=106
-
-What is the following line? 
-s3n5 x=21.273957 y=11.98127 z=2  * src_line=107
-
-What is the following line? 
-s3n6 x=19.575345 y=14.60946 z=2  * src_line=108
-
-What is the following line? 
-s3n7 x=17.553746 y=16.999855 z=2  * src_line=109
-
-What is the following line? 
-s3n8 x=15.242099 y=19.112987 z=2  * src_line=110
-
-What is the following line? 
-s3n9 x=12.678137 y=20.913912 z=2  * src_line=111
-
-What is the following line? 
-s3n10 x=9.903768 y=22.372784 z=2  * src_line=112
-
-What is the following line? 
-s3n11 x=6.9643933 y=23.465352 z=2  * src_line=113
-
-What is the following line? 
-s3n12 x=3.9081617 y=24.173362 z=2  * src_line=114
-
-What is the following line? 
-s3n13 x=0.78518189 y=24.484863 z=2  * src_line=115
-
-What is the following line? 
-s3n14 x=-2.353299 y=24.394406 z=2  * src_line=116
-
-What is the following line? 
-s3n15 x=-5.4557365 y=23.903143 z=2  * src_line=117
-
-What is the following line? 
-s3n16 x=-8.4711352 y=23.018811 z=2  * src_line=118
-
-What is the following line? 
-s3n17 x=-11.349887 y=21.755609 z=2  * src_line=119
-
-What is the following line? 
-s3n18 x=-14.044588 y=20.133973 z=2  * src_line=120
-
-What is the following line? 
-s3n19 x=-16.510818 y=18.180246 z=2  * src_line=121
-
-What is the following line? 
-s3n20 x=-18.707873 y=15.926244 z=2  * src_line=122
-
-What is the following line? 
-s3n21 x=-20.599436 y=13.408747 z=2  * src_line=123
-
-What is the following line? 
-s3n22 x=-22.154181 y=10.668891 z=2  * src_line=124
-
-What is the following line? 
-s3n23 x=-23.346287 y=7.7515014 z=2  * src_line=125
-
-What is the following line? 
-s3n24 x=-24.15587 y=4.7043553 z=2  * src_line=126
-
-What is the following line? 
-s3n25 x=-24.569314 y=1.5774023 z=2  * src_line=127
-
-What is the following line? 
-s3n26 x=-24.579497 y=-1.5780561 z=2  * src_line=128
-
-What is the following line? 
-s3n27 x=-24.185918 y=-4.7102071 z=2  * src_line=129
-
-What is the following line? 
-s3n28 x=-23.394708 y=-7.7675783 z=2  * src_line=130
-
-What is the following line? 
-s3n29 x=-22.218536 y=-10.699883 z=2  * src_line=131
-
-What is the following line? 
-s3n30 x=-20.676403 y=-13.458847 z=2  * src_line=132
-
-What is the following line? 
-s3n31 x=-18.793341 y=-15.999004 z=2  * src_line=133
-
-What is the following line? 
-s3n32 x=-16.600001 y=-18.278446 z=2  * src_line=134
-
-What is the following line? 
-s3n33 x=-14.132157 y=-20.25951 z=2  * src_line=135
-
-What is the following line? 
-s3n34 x=-11.430124 y=-21.909407 z=2  * src_line=136
-
-What is the following line? 
-s3n35 x=-8.5380937 y=-23.200759 z=2  * src_line=137
-
-What is the following line? 
-s3n36 x=-5.5034195 y=-24.112056 z=2  * src_line=138
-
-What is the following line? 
-s3n37 x=-2.375835 y=-24.628015 z=2  * src_line=139
-
-What is the following line? 
-s3n38 x=0.79335831 y=-24.739834 z=2  * src_line=140
-
-What is the following line? 
-s3n39 x=3.9521331 y=-24.445341 z=2  * src_line=141
-
-What is the following line? 
-s3n40 x=7.0485903 y=-23.74904 z=2  * src_line=142
-
-What is the following line? 
-s3n41 x=10.031812 y=-22.662037 z=2  * src_line=143
-
-What is the following line? 
-s3n42 x=12.852697 y=-21.201869 z=2  * src_line=144
-
-What is the following line? 
-s3n43 x=15.464774 y=-19.392213 z=2  * src_line=145
-
-What is the following line? 
-s3n44 x=17.82496 y=-17.262511 z=2  * src_line=146
-
-What is the following line? 
-s3n45 x=19.894275 y=-14.847484 z=2  * src_line=147
-
-What is the following line? 
-s3n46 x=21.638489 y=-12.18657 z=2  * src_line=148
-
-What is the following line? 
-s3n47 x=23.028679 y=-9.323279 z=2  * src_line=149
-
-What is the following line? 
-s3n48 x=24.041719 y=-6.3044811 z=2  * src_line=150
-
-What is the following line? 
-s3n49 x=24.660656 y=-3.1796395 z=2  * src_line=151
-
-What is the following line? 
-s3n50 x=24.875 y=-0 z=2  * src_line=152
-
-No node read in yet named s3n1
-No node read in yet named s3n2
-No node read in yet named s3n3
-No node read in yet named s3n4
-No node read in yet named s3n5
-No node read in yet named s3n6
-No node read in yet named s3n7
-No node read in yet named s3n8
-No node read in yet named s3n9
-No node read in yet named s3n10
-No node read in yet named s3n11
-No node read in yet named s3n12
-No node read in yet named s3n13
-No node read in yet named s3n14
-No node read in yet named s3n15
-No node read in yet named s3n16
-No node read in yet named s3n17
-No node read in yet named s3n18
-No node read in yet named s3n19
-No node read in yet named s3n20
-No node read in yet named s3n21
-No node read in yet named s3n22
-No node read in yet named s3n23
-No node read in yet named s3n24
-No node read in yet named s3n25
-No node read in yet named s3n26
-No node read in yet named s3n27
-No node read in yet named s3n28
-No node read in yet named s3n29
-No node read in yet named s3n30
-No node read in yet named s3n31
-No node read in yet named s3n32
-No node read in yet named s3n33
-No node read in yet named s3n34
-No node read in yet named s3n35
-No node read in yet named s3n36
-No node read in yet named s3n37
-No node read in yet named s3n38
-No node read in yet named s3n39
-No node read in yet named s3n40
-No node read in yet named s3n41
-No node read in yet named s3n42
-No node read in yet named s3n43
-No node read in yet named s3n44
-No node read in yet named s3n45
-No node read in yet named s3n46
-No node read in yet named s3n47
-No node read in yet named s3n48
-No node read in yet named s3n49
-What is the following line? 
-s4n1 x=24.875 y=0 z=3  * src_line=153
-
-What is the following line? 
-s4n2 x=24.660656 y=3.1796395 z=3  * src_line=154
-
-What is the following line? 
-s4n3 x=24.041719 y=6.3044811 z=3  * src_line=155
-
-What is the following line? 
-s4n4 x=23.028679 y=9.323279 z=3  * src_line=156
-
-What is the following line? 
-s4n5 x=21.638489 y=12.18657 z=3  * src_line=157
-
-What is the following line? 
-s4n6 x=19.894275 y=14.847484 z=3  * src_line=158
-
-What is the following line? 
-s4n7 x=17.82496 y=17.262511 z=3  * src_line=159
-
-What is the following line? 
-s4n8 x=15.464774 y=19.392213 z=3  * src_line=160
-
-What is the following line? 
-s4n9 x=12.852697 y=21.201869 z=3  * src_line=161
-
-What is the following line? 
-s4n10 x=10.031812 y=22.662037 z=3  * src_line=162
-
-What is the following line? 
-s4n11 x=7.0485903 y=23.74904 z=3  * src_line=163
-
-What is the following line? 
-s4n12 x=3.9521331 y=24.445341 z=3  * src_line=164
-
-What is the following line? 
-s4n13 x=0.79335831 y=24.739834 z=3  * src_line=165
-
-What is the following line? 
-s4n14 x=-2.375835 y=24.628015 z=3  * src_line=166
-
-What is the following line? 
-s4n15 x=-5.5034195 y=24.112056 z=3  * src_line=167
-
-What is the following line? 
-s4n16 x=-8.5380937 y=23.200759 z=3  * src_line=168
-
-What is the following line? 
-s4n17 x=-11.430124 y=21.909407 z=3  * src_line=169
-
-What is the following line? 
-s4n18 x=-14.132157 y=20.25951 z=3  * src_line=170
-
-What is the following line? 
-s4n19 x=-16.600001 y=18.278446 z=3  * src_line=171
-
-What is the following line? 
-s4n20 x=-18.793341 y=15.999004 z=3  * src_line=172
-
-What is the following line? 
-s4n21 x=-20.676403 y=13.458847 z=3  * src_line=173
-
-What is the following line? 
-s4n22 x=-22.218536 y=10.699883 z=3  * src_line=174
-
-What is the following line? 
-s4n23 x=-23.394708 y=7.7675783 z=3  * src_line=175
-
-What is the following line? 
-s4n24 x=-24.185918 y=4.7102071 z=3  * src_line=176
-
-What is the following line? 
-s4n25 x=-24.579497 y=1.5780561 z=3  * src_line=177
-
-What is the following line? 
-s4n26 x=-24.569314 y=-1.5774023 z=3  * src_line=178
-
-What is the following line? 
-s4n27 x=-24.15587 y=-4.7043553 z=3  * src_line=179
-
-What is the following line? 
-s4n28 x=-23.346287 y=-7.7515014 z=3  * src_line=180
-
-What is the following line? 
-s4n29 x=-22.154181 y=-10.668891 z=3  * src_line=181
-
-What is the following line? 
-s4n30 x=-20.599436 y=-13.408747 z=3  * src_line=182
-
-What is the following line? 
-s4n31 x=-18.707873 y=-15.926244 z=3  * src_line=183
-
-What is the following line? 
-s4n32 x=-16.510818 y=-18.180246 z=3  * src_line=184
-
-What is the following line? 
-s4n33 x=-14.044588 y=-20.133973 z=3  * src_line=185
-
-What is the following line? 
-s4n34 x=-11.349887 y=-21.755609 z=3  * src_line=186
-
-What is the following line? 
-s4n35 x=-8.4711352 y=-23.018811 z=3  * src_line=187
-
-What is the following line? 
-s4n36 x=-5.4557365 y=-23.903143 z=3  * src_line=188
-
-What is the following line? 
-s4n37 x=-2.353299 y=-24.394406 z=3  * src_line=189
-
-What is the following line? 
-s4n38 x=0.78518189 y=-24.484863 z=3  * src_line=190
-
-What is the following line? 
-s4n39 x=3.9081617 y=-24.173362 z=3  * src_line=191
-
-What is the following line? 
-s4n40 x=6.9643933 y=-23.465352 z=3  * src_line=192
-
-What is the following line? 
-s4n41 x=9.903768 y=-22.372784 z=3  * src_line=193
-
-What is the following line? 
-s4n42 x=12.678137 y=-20.913912 z=3  * src_line=194
-
-What is the following line? 
-s4n43 x=15.242099 y=-19.112987 z=3  * src_line=195
-
-What is the following line? 
-s4n44 x=17.553746 y=-16.999855 z=3  * src_line=196
-
-What is the following line? 
-s4n45 x=19.575345 y=-14.60946 z=3  * src_line=197
-
-What is the following line? 
-s4n46 x=21.273957 y=-11.98127 z=3  * src_line=198
-
-What is the following line? 
-s4n47 x=22.621971 y=-9.158621 z=3  * src_line=199
-
-What is the following line? 
-s4n48 x=23.597553 y=-6.1880071 z=3  * src_line=200
-
-What is the following line? 
-s4n49 x=24.185002 y=-3.1183107 z=3  * src_line=201
-
-What is the following line? 
-s4n50 x=24.375 y=-0 z=3  * src_line=202
-
-No node read in yet named s4n1
-No node read in yet named s4n2
-No node read in yet named s4n3
-No node read in yet named s4n4
-No node read in yet named s4n5
-No node read in yet named s4n6
-No node read in yet named s4n7
-No node read in yet named s4n8
-No node read in yet named s4n9
-No node read in yet named s4n10
-No node read in yet named s4n11
-No node read in yet named s4n12
-No node read in yet named s4n13
-No node read in yet named s4n14
-No node read in yet named s4n15
-No node read in yet named s4n16
-No node read in yet named s4n17
-No node read in yet named s4n18
-No node read in yet named s4n19
-No node read in yet named s4n20
-No node read in yet named s4n21
-No node read in yet named s4n22
-No node read in yet named s4n23
-No node read in yet named s4n24
-No node read in yet named s4n25
-No node read in yet named s4n26
-No node read in yet named s4n27
-No node read in yet named s4n28
-No node read in yet named s4n29
-No node read in yet named s4n30
-No node read in yet named s4n31
-No node read in yet named s4n32
-No node read in yet named s4n33
-No node read in yet named s4n34
-No node read in yet named s4n35
-No node read in yet named s4n36
-No node read in yet named s4n37
-No node read in yet named s4n38
-No node read in yet named s4n39
-No node read in yet named s4n40
-No node read in yet named s4n41
-No node read in yet named s4n42
-No node read in yet named s4n43
-No node read in yet named s4n44
-No node read in yet named s4n45
-No node read in yet named s4n46
-No node read in yet named s4n47
-No node read in yet named s4n48
-No node read in yet named s4n49
-addexternal: No node read in yet named s1n1
-addexternal: No node read in yet named s2n1
-addexternal: No node read in yet named s3n1
-addexternal: No node read in yet named s4n1
-
-FastHenry 3.0, (c) by M.I.T.
-FastHenry2 Windows porting and modifications, version 3.6
-    (c) 1998, 2015 by Enrico Di Lorenzo, www.fastfieldsolvers.com
-
-Running FastHenry 3.0 (29Sep96)
-  Date: Tue Nov 18 08:33:07 2025
-Solution technique: ITERATIVE
-Matrix vector product method: MULTIPOLE
-  Order of expansion: 2
-Preconditioner: ON
-Error tolerance: 0.001
-Reading from file: D:\Ansys\MasterThesis\Python\Stand_18.11.2025\Try_08.28\K1_N1.00\FastSolverPython\Wire_Sections.inp
-Title:
-* FastHenry2 input generated from Wire_Sections.txt
-
-all lengths multiplied by 0.001 to convert to meters
-What is the following line? 
-s1n1 x=24.375 y=0 z=0  * src_line=3
-
-What is the following line? 
-s1n2 x=24.185002 y=3.1183107 z=0  * src_line=4
-
-What is the following line? 
-s1n3 x=23.597553 y=6.1880071 z=0  * src_line=5
-
-What is the following line? 
-s1n4 x=22.621971 y=9.158621 z=0  * src_line=6
-
-What is the following line? 
-s1n5 x=21.273957 y=11.98127 z=0  * src_line=7
-
-What is the following line? 
-s1n6 x=19.575345 y=14.60946 z=0  * src_line=8
-
-What is the following line? 
-s1n7 x=17.553746 y=16.999855 z=0  * src_line=9
-
-What is the following line? 
-s1n8 x=15.242099 y=19.112987 z=0  * src_line=10
-
-What is the following line? 
-s1n9 x=12.678137 y=20.913912 z=0  * src_line=11
-
-What is the following line? 
-s1n10 x=9.903768 y=22.372784 z=0  * src_line=12
-
-What is the following line? 
-s1n11 x=6.9643933 y=23.465352 z=0  * src_line=13
-
-What is the following line? 
-s1n12 x=3.9081617 y=24.173362 z=0  * src_line=14
-
-What is the following line? 
-s1n13 x=0.78518189 y=24.484863 z=0  * src_line=15
-
-What is the following line? 
-s1n14 x=-2.353299 y=24.394406 z=0  * src_line=16
-
-What is the following line? 
-s1n15 x=-5.4557365 y=23.903143 z=0  * src_line=17
-
-What is the following line? 
-s1n16 x=-8.4711352 y=23.018811 z=0  * src_line=18
-
-What is the following line? 
-s1n17 x=-11.349887 y=21.755609 z=0  * src_line=19
-
-What is the following line? 
-s1n18 x=-14.044588 y=20.133973 z=0  * src_line=20
-
-What is the following line? 
-s1n19 x=-16.510818 y=18.180246 z=0  * src_line=21
-
-What is the following line? 
-s1n20 x=-18.707873 y=15.926244 z=0  * src_line=22
-
-What is the following line? 
-s1n21 x=-20.599436 y=13.408747 z=0  * src_line=23
-
-What is the following line? 
-s1n22 x=-22.154181 y=10.668891 z=0  * src_line=24
-
-What is the following line? 
-s1n23 x=-23.346287 y=7.7515014 z=0  * src_line=25
-
-What is the following line? 
-s1n24 x=-24.15587 y=4.7043553 z=0  * src_line=26
-
-What is the following line? 
-s1n25 x=-24.569314 y=1.5774023 z=0  * src_line=27
-
-What is the following line? 
-s1n26 x=-24.579497 y=-1.5780561 z=0  * src_line=28
-
-What is the following line? 
-s1n27 x=-24.185918 y=-4.7102071 z=0  * src_line=29
-
-What is the following line? 
-s1n28 x=-23.394708 y=-7.7675783 z=0  * src_line=30
-
-What is the following line? 
-s1n29 x=-22.218536 y=-10.699883 z=0  * src_line=31
-
-What is the following line? 
-s1n30 x=-20.676403 y=-13.458847 z=0  * src_line=32
-
-What is the following line? 
-s1n31 x=-18.793341 y=-15.999004 z=0  * src_line=33
-
-What is the following line? 
-s1n32 x=-16.600001 y=-18.278446 z=0  * src_line=34
-
-What is the following line? 
-s1n33 x=-14.132157 y=-20.25951 z=0  * src_line=35
-
-What is the following line? 
-s1n34 x=-11.430124 y=-21.909407 z=0  * src_line=36
-
-What is the following line? 
-s1n35 x=-8.5380937 y=-23.200759 z=0  * src_line=37
-
-What is the following line? 
-s1n36 x=-5.5034195 y=-24.112056 z=0  * src_line=38
-
-What is the following line? 
-s1n37 x=-2.375835 y=-24.628015 z=0  * src_line=39
-
-What is the following line? 
-s1n38 x=0.79335831 y=-24.739834 z=0  * src_line=40
-
-What is the following line? 
-s1n39 x=3.9521331 y=-24.445341 z=0  * src_line=41
-
-What is the following line? 
-s1n40 x=7.0485903 y=-23.74904 z=0  * src_line=42
-
-What is the following line? 
-s1n41 x=10.031812 y=-22.662037 z=0  * src_line=43
-
-What is the following line? 
-s1n42 x=12.852697 y=-21.201869 z=0  * src_line=44
-
-What is the following line? 
-s1n43 x=15.464774 y=-19.392213 z=0  * src_line=45
-
-What is the following line? 
-s1n44 x=17.82496 y=-17.262511 z=0  * src_line=46
-
-What is the following line? 
-s1n45 x=19.894275 y=-14.847484 z=0  * src_line=47
-
-What is the following line? 
-s1n46 x=21.638489 y=-12.18657 z=0  * src_line=48
-
-What is the following line? 
-s1n47 x=23.028679 y=-9.323279 z=0  * src_line=49
-
-What is the following line? 
-s1n48 x=24.041719 y=-6.3044811 z=0  * src_line=50
-
-What is the following line? 
-s1n49 x=24.660656 y=-3.1796395 z=0  * src_line=51
-
-What is the following line? 
-s1n50 x=24.875 y=-0 z=0  * src_line=52
-
-No node read in yet named s1n1
-No node read in yet named s1n2
-No node read in yet named s1n3
-No node read in yet named s1n4
-No node read in yet named s1n5
-No node read in yet named s1n6
-No node read in yet named s1n7
-No node read in yet named s1n8
-No node read in yet named s1n9
-No node read in yet named s1n10
-No node read in yet named s1n11
-No node read in yet named s1n12
-No node read in yet named s1n13
-No node read in yet named s1n14
-No node read in yet named s1n15
-No node read in yet named s1n16
-No node read in yet named s1n17
-No node read in yet named s1n18
-No node read in yet named s1n19
-No node read in yet named s1n20
-No node read in yet named s1n21
-No node read in yet named s1n22
-No node read in yet named s1n23
-No node read in yet named s1n24
-No node read in yet named s1n25
-No node read in yet named s1n26
-No node read in yet named s1n27
-No node read in yet named s1n28
-No node read in yet named s1n29
-No node read in yet named s1n30
-No node read in yet named s1n31
-No node read in yet named s1n32
-No node read in yet named s1n33
-No node read in yet named s1n34
-No node read in yet named s1n35
-No node read in yet named s1n36
-No node read in yet named s1n37
-No node read in yet named s1n38
-No node read in yet named s1n39
-No node read in yet named s1n40
-No node read in yet named s1n41
-No node read in yet named s1n42
-No node read in yet named s1n43
-No node read in yet named s1n44
-No node read in yet named s1n45
-No node read in yet named s1n46
-No node read in yet named s1n47
-No node read in yet named s1n48
-No node read in yet named s1n49
-What is the following line? 
-s2n1 x=24.875 y=0 z=1  * src_line=53
-
-What is the following line? 
-s2n2 x=24.660656 y=3.1796395 z=1  * src_line=54
-
-What is the following line? 
-s2n3 x=24.041719 y=6.3044811 z=1  * src_line=55
-
-What is the following line? 
-s2n4 x=23.028679 y=9.323279 z=1  * src_line=56
-
-What is the following line? 
-s2n5 x=21.638489 y=12.18657 z=1  * src_line=57
-
-What is the following line? 
-s2n6 x=19.894275 y=14.847484 z=1  * src_line=58
-
-What is the following line? 
-s2n7 x=17.82496 y=17.262511 z=1  * src_line=59
-
-What is the following line? 
-s2n8 x=15.464774 y=19.392213 z=1  * src_line=60
-
-What is the following line? 
-s2n9 x=12.852697 y=21.201869 z=1  * src_line=61
-
-What is the following line? 
-s2n10 x=10.031812 y=22.662037 z=1  * src_line=62
-
-What is the following line? 
-s2n11 x=7.0485903 y=23.74904 z=1  * src_line=63
-
-What is the following line? 
-s2n12 x=3.9521331 y=24.445341 z=1  * src_line=64
-
-What is the following line? 
-s2n13 x=0.79335831 y=24.739834 z=1  * src_line=65
-
-What is the following line? 
-s2n14 x=-2.375835 y=24.628015 z=1  * src_line=66
-
-What is the following line? 
-s2n15 x=-5.5034195 y=24.112056 z=1  * src_line=67
-
-What is the following line? 
-s2n16 x=-8.5380937 y=23.200759 z=1  * src_line=68
-
-What is the following line? 
-s2n17 x=-11.430124 y=21.909407 z=1  * src_line=69
-
-What is the following line? 
-s2n18 x=-14.132157 y=20.25951 z=1  * src_line=70
-
-What is the following line? 
-s2n19 x=-16.600001 y=18.278446 z=1  * src_line=71
-
-What is the following line? 
-s2n20 x=-18.793341 y=15.999004 z=1  * src_line=72
-
-What is the following line? 
-s2n21 x=-20.676403 y=13.458847 z=1  * src_line=73
-
-What is the following line? 
-s2n22 x=-22.218536 y=10.699883 z=1  * src_line=74
-
-What is the following line? 
-s2n23 x=-23.394708 y=7.7675783 z=1  * src_line=75
-
-What is the following line? 
-s2n24 x=-24.185918 y=4.7102071 z=1  * src_line=76
-
-What is the following line? 
-s2n25 x=-24.579497 y=1.5780561 z=1  * src_line=77
-
-What is the following line? 
-s2n26 x=-24.569314 y=-1.5774023 z=1  * src_line=78
-
-What is the following line? 
-s2n27 x=-24.15587 y=-4.7043553 z=1  * src_line=79
-
-What is the following line? 
-s2n28 x=-23.346287 y=-7.7515014 z=1  * src_line=80
-
-What is the following line? 
-s2n29 x=-22.154181 y=-10.668891 z=1  * src_line=81
-
-What is the following line? 
-s2n30 x=-20.599436 y=-13.408747 z=1  * src_line=82
-
-What is the following line? 
-s2n31 x=-18.707873 y=-15.926244 z=1  * src_line=83
-
-What is the following line? 
-s2n32 x=-16.510818 y=-18.180246 z=1  * src_line=84
-
-What is the following line? 
-s2n33 x=-14.044588 y=-20.133973 z=1  * src_line=85
-
-What is the following line? 
-s2n34 x=-11.349887 y=-21.755609 z=1  * src_line=86
-
-What is the following line? 
-s2n35 x=-8.4711352 y=-23.018811 z=1  * src_line=87
-
-What is the following line? 
-s2n36 x=-5.4557365 y=-23.903143 z=1  * src_line=88
-
-What is the following line? 
-s2n37 x=-2.353299 y=-24.394406 z=1  * src_line=89
-
-What is the following line? 
-s2n38 x=0.78518189 y=-24.484863 z=1  * src_line=90
-
-What is the following line? 
-s2n39 x=3.9081617 y=-24.173362 z=1  * src_line=91
-
-What is the following line? 
-s2n40 x=6.9643933 y=-23.465352 z=1  * src_line=92
-
-What is the following line? 
-s2n41 x=9.903768 y=-22.372784 z=1  * src_line=93
-
-What is the following line? 
-s2n42 x=12.678137 y=-20.913912 z=1  * src_line=94
-
-What is the following line? 
-s2n43 x=15.242099 y=-19.112987 z=1  * src_line=95
-
-What is the following line? 
-s2n44 x=17.553746 y=-16.999855 z=1  * src_line=96
-
-What is the following line? 
-s2n45 x=19.575345 y=-14.60946 z=1  * src_line=97
-
-What is the following line? 
-s2n46 x=21.273957 y=-11.98127 z=1  * src_line=98
-
-What is the following line? 
-s2n47 x=22.621971 y=-9.158621 z=1  * src_line=99
-
-What is the following line? 
-s2n48 x=23.597553 y=-6.1880071 z=1  * src_line=100
-
-What is the following line? 
-s2n49 x=24.185002 y=-3.1183107 z=1  * src_line=101
-
-What is the following line? 
-s2n50 x=24.375 y=-0 z=1  * src_line=102
-
-No node read in yet named s2n1
-No node read in yet named s2n2
-No node read in yet named s2n3
-No node read in yet named s2n4
-No node read in yet named s2n5
-No node read in yet named s2n6
-No node read in yet named s2n7
-No node read in yet named s2n8
-No node read in yet named s2n9
-No node read in yet named s2n10
-No node read in yet named s2n11
-No node read in yet named s2n12
-No node read in yet named s2n13
-No node read in yet named s2n14
-No node read in yet named s2n15
-No node read in yet named s2n16
-No node read in yet named s2n17
-No node read in yet named s2n18
-No node read in yet named s2n19
-No node read in yet named s2n20
-No node read in yet named s2n21
-No node read in yet named s2n22
-No node read in yet named s2n23
-No node read in yet named s2n24
-No node read in yet named s2n25
-No node read in yet named s2n26
-No node read in yet named s2n27
-No node read in yet named s2n28
-No node read in yet named s2n29
-No node read in yet named s2n30
-No node read in yet named s2n31
-No node read in yet named s2n32
-No node read in yet named s2n33
-No node read in yet named s2n34
-No node read in yet named s2n35
-No node read in yet named s2n36
-No node read in yet named s2n37
-No node read in yet named s2n38
-No node read in yet named s2n39
-No node read in yet named s2n40
-No node read in yet named s2n41
-No node read in yet named s2n42
-No node read in yet named s2n43
-No node read in yet named s2n44
-No node read in yet named s2n45
-No node read in yet named s2n46
-No node read in yet named s2n47
-No node read in yet named s2n48
-No node read in yet named s2n49
-What is the following line? 
-s3n1 x=24.375 y=0 z=2  * src_line=103
-
-What is the following line? 
-s3n2 x=24.185002 y=3.1183107 z=2  * src_line=104
-
-What is the following line? 
-s3n3 x=23.597553 y=6.1880071 z=2  * src_line=105
-
-What is the following line? 
-s3n4 x=22.621971 y=9.158621 z=2  * src_line=106
-
-What is the following line? 
-s3n5 x=21.273957 y=11.98127 z=2  * src_line=107
-
-What is the following line? 
-s3n6 x=19.575345 y=14.60946 z=2  * src_line=108
-
-What is the following line? 
-s3n7 x=17.553746 y=16.999855 z=2  * src_line=109
-
-What is the following line? 
-s3n8 x=15.242099 y=19.112987 z=2  * src_line=110
-
-What is the following line? 
-s3n9 x=12.678137 y=20.913912 z=2  * src_line=111
-
-What is the following line? 
-s3n10 x=9.903768 y=22.372784 z=2  * src_line=112
-
-What is the following line? 
-s3n11 x=6.9643933 y=23.465352 z=2  * src_line=113
-
-What is the following line? 
-s3n12 x=3.9081617 y=24.173362 z=2  * src_line=114
-
-What is the following line? 
-s3n13 x=0.78518189 y=24.484863 z=2  * src_line=115
-
-What is the following line? 
-s3n14 x=-2.353299 y=24.394406 z=2  * src_line=116
-
-What is the following line? 
-s3n15 x=-5.4557365 y=23.903143 z=2  * src_line=117
-
-What is the following line? 
-s3n16 x=-8.4711352 y=23.018811 z=2  * src_line=118
-
-What is the following line? 
-s3n17 x=-11.349887 y=21.755609 z=2  * src_line=119
-
-What is the following line? 
-s3n18 x=-14.044588 y=20.133973 z=2  * src_line=120
-
-What is the following line? 
-s3n19 x=-16.510818 y=18.180246 z=2  * src_line=121
-
-What is the following line? 
-s3n20 x=-18.707873 y=15.926244 z=2  * src_line=122
-
-What is the following line? 
-s3n21 x=-20.599436 y=13.408747 z=2  * src_line=123
-
-What is the following line? 
-s3n22 x=-22.154181 y=10.668891 z=2  * src_line=124
-
-What is the following line? 
-s3n23 x=-23.346287 y=7.7515014 z=2  * src_line=125
-
-What is the following line? 
-s3n24 x=-24.15587 y=4.7043553 z=2  * src_line=126
-
-What is the following line? 
-s3n25 x=-24.569314 y=1.5774023 z=2  * src_line=127
-
-What is the following line? 
-s3n26 x=-24.579497 y=-1.5780561 z=2  * src_line=128
-
-What is the following line? 
-s3n27 x=-24.185918 y=-4.7102071 z=2  * src_line=129
-
-What is the following line? 
-s3n28 x=-23.394708 y=-7.7675783 z=2  * src_line=130
-
-What is the following line? 
-s3n29 x=-22.218536 y=-10.699883 z=2  * src_line=131
-
-What is the following line? 
-s3n30 x=-20.676403 y=-13.458847 z=2  * src_line=132
-
-What is the following line? 
-s3n31 x=-18.793341 y=-15.999004 z=2  * src_line=133
-
-What is the following line? 
-s3n32 x=-16.600001 y=-18.278446 z=2  * src_line=134
-
-What is the following line? 
-s3n33 x=-14.132157 y=-20.25951 z=2  * src_line=135
-
-What is the following line? 
-s3n34 x=-11.430124 y=-21.909407 z=2  * src_line=136
-
-What is the following line? 
-s3n35 x=-8.5380937 y=-23.200759 z=2  * src_line=137
-
-What is the following line? 
-s3n36 x=-5.5034195 y=-24.112056 z=2  * src_line=138
-
-What is the following line? 
-s3n37 x=-2.375835 y=-24.628015 z=2  * src_line=139
-
-What is the following line? 
-s3n38 x=0.79335831 y=-24.739834 z=2  * src_line=140
-
-What is the following line? 
-s3n39 x=3.9521331 y=-24.445341 z=2  * src_line=141
-
-What is the following line? 
-s3n40 x=7.0485903 y=-23.74904 z=2  * src_line=142
-
-What is the following line? 
-s3n41 x=10.031812 y=-22.662037 z=2  * src_line=143
-
-What is the following line? 
-s3n42 x=12.852697 y=-21.201869 z=2  * src_line=144
-
-What is the following line? 
-s3n43 x=15.464774 y=-19.392213 z=2  * src_line=145
-
-What is the following line? 
-s3n44 x=17.82496 y=-17.262511 z=2  * src_line=146
-
-What is the following line? 
-s3n45 x=19.894275 y=-14.847484 z=2  * src_line=147
-
-What is the following line? 
-s3n46 x=21.638489 y=-12.18657 z=2  * src_line=148
-
-What is the following line? 
-s3n47 x=23.028679 y=-9.323279 z=2  * src_line=149
-
-What is the following line? 
-s3n48 x=24.041719 y=-6.3044811 z=2  * src_line=150
-
-What is the following line? 
-s3n49 x=24.660656 y=-3.1796395 z=2  * src_line=151
-
-What is the following line? 
-s3n50 x=24.875 y=-0 z=2  * src_line=152
-
-No node read in yet named s3n1
-No node read in yet named s3n2
-No node read in yet named s3n3
-No node read in yet named s3n4
-No node read in yet named s3n5
-No node read in yet named s3n6
-No node read in yet named s3n7
-No node read in yet named s3n8
-No node read in yet named s3n9
-No node read in yet named s3n10
-No node read in yet named s3n11
-No node read in yet named s3n12
-No node read in yet named s3n13
-No node read in yet named s3n14
-No node read in yet named s3n15
-No node read in yet named s3n16
-No node read in yet named s3n17
-No node read in yet named s3n18
-No node read in yet named s3n19
-No node read in yet named s3n20
-No node read in yet named s3n21
-No node read in yet named s3n22
-No node read in yet named s3n23
-No node read in yet named s3n24
-No node read in yet named s3n25
-No node read in yet named s3n26
-No node read in yet named s3n27
-No node read in yet named s3n28
-No node read in yet named s3n29
-No node read in yet named s3n30
-No node read in yet named s3n31
-No node read in yet named s3n32
-No node read in yet named s3n33
-No node read in yet named s3n34
-No node read in yet named s3n35
-No node read in yet named s3n36
-No node read in yet named s3n37
-No node read in yet named s3n38
-No node read in yet named s3n39
-No node read in yet named s3n40
-No node read in yet named s3n41
-No node read in yet named s3n42
-No node read in yet named s3n43
-No node read in yet named s3n44
-No node read in yet named s3n45
-No node read in yet named s3n46
-No node read in yet named s3n47
-No node read in yet named s3n48
-No node read in yet named s3n49
-What is the following line? 
-s4n1 x=24.875 y=0 z=3  * src_line=153
-
-What is the following line? 
-s4n2 x=24.660656 y=3.1796395 z=3  * src_line=154
-
-What is the following line? 
-s4n3 x=24.041719 y=6.3044811 z=3  * src_line=155
-
-What is the following line? 
-s4n4 x=23.028679 y=9.323279 z=3  * src_line=156
-
-What is the following line? 
-s4n5 x=21.638489 y=12.18657 z=3  * src_line=157
-
-What is the following line? 
-s4n6 x=19.894275 y=14.847484 z=3  * src_line=158
-
-What is the following line? 
-s4n7 x=17.82496 y=17.262511 z=3  * src_line=159
-
-What is the following line? 
-s4n8 x=15.464774 y=19.392213 z=3  * src_line=160
-
-What is the following line? 
-s4n9 x=12.852697 y=21.201869 z=3  * src_line=161
-
-What is the following line? 
-s4n10 x=10.031812 y=22.662037 z=3  * src_line=162
-
-What is the following line? 
-s4n11 x=7.0485903 y=23.74904 z=3  * src_line=163
-
-What is the following line? 
-s4n12 x=3.9521331 y=24.445341 z=3  * src_line=164
-
-What is the following line? 
-s4n13 x=0.79335831 y=24.739834 z=3  * src_line=165
-
-What is the following line? 
-s4n14 x=-2.375835 y=24.628015 z=3  * src_line=166
-
-What is the following line? 
-s4n15 x=-5.5034195 y=24.112056 z=3  * src_line=167
-
-What is the following line? 
-s4n16 x=-8.5380937 y=23.200759 z=3  * src_line=168
-
-What is the following line? 
-s4n17 x=-11.430124 y=21.909407 z=3  * src_line=169
-
-What is the following line? 
-s4n18 x=-14.132157 y=20.25951 z=3  * src_line=170
-
-What is the following line? 
-s4n19 x=-16.600001 y=18.278446 z=3  * src_line=171
-
-What is the following line? 
-s4n20 x=-18.793341 y=15.999004 z=3  * src_line=172
-
-What is the following line? 
-s4n21 x=-20.676403 y=13.458847 z=3  * src_line=173
-
-What is the following line? 
-s4n22 x=-22.218536 y=10.699883 z=3  * src_line=174
-
-What is the following line? 
-s4n23 x=-23.394708 y=7.7675783 z=3  * src_line=175
-
-What is the following line? 
-s4n24 x=-24.185918 y=4.7102071 z=3  * src_line=176
-
-What is the following line? 
-s4n25 x=-24.579497 y=1.5780561 z=3  * src_line=177
-
-What is the following line? 
-s4n26 x=-24.569314 y=-1.5774023 z=3  * src_line=178
-
-What is the following line? 
-s4n27 x=-24.15587 y=-4.7043553 z=3  * src_line=179
-
-What is the following line? 
-s4n28 x=-23.346287 y=-7.7515014 z=3  * src_line=180
-
-What is the following line? 
-s4n29 x=-22.154181 y=-10.668891 z=3  * src_line=181
-
-What is the following line? 
-s4n30 x=-20.599436 y=-13.408747 z=3  * src_line=182
-
-What is the following line? 
-s4n31 x=-18.707873 y=-15.926244 z=3  * src_line=183
-
-What is the following line? 
-s4n32 x=-16.510818 y=-18.180246 z=3  * src_line=184
-
-What is the following line? 
-s4n33 x=-14.044588 y=-20.133973 z=3  * src_line=185
-
-What is the following line? 
-s4n34 x=-11.349887 y=-21.755609 z=3  * src_line=186
-
-What is the following line? 
-s4n35 x=-8.4711352 y=-23.018811 z=3  * src_line=187
-
-What is the following line? 
-s4n36 x=-5.4557365 y=-23.903143 z=3  * src_line=188
-
-What is the following line? 
-s4n37 x=-2.353299 y=-24.394406 z=3  * src_line=189
-
-What is the following line? 
-s4n38 x=0.78518189 y=-24.484863 z=3  * src_line=190
-
-What is the following line? 
-s4n39 x=3.9081617 y=-24.173362 z=3  * src_line=191
-
-What is the following line? 
-s4n40 x=6.9643933 y=-23.465352 z=3  * src_line=192
-
-What is the following line? 
-s4n41 x=9.903768 y=-22.372784 z=3  * src_line=193
-
-What is the following line? 
-s4n42 x=12.678137 y=-20.913912 z=3  * src_line=194
-
-What is the following line? 
-s4n43 x=15.242099 y=-19.112987 z=3  * src_line=195
-
-What is the following line? 
-s4n44 x=17.553746 y=-16.999855 z=3  * src_line=196
-
-What is the following line? 
-s4n45 x=19.575345 y=-14.60946 z=3  * src_line=197
-
-What is the following line? 
-s4n46 x=21.273957 y=-11.98127 z=3  * src_line=198
-
-What is the following line? 
-s4n47 x=22.621971 y=-9.158621 z=3  * src_line=199
-
-What is the following line? 
-s4n48 x=23.597553 y=-6.1880071 z=3  * src_line=200
-
-What is the following line? 
-s4n49 x=24.185002 y=-3.1183107 z=3  * src_line=201
-
-What is the following line? 
-s4n50 x=24.375 y=-0 z=3  * src_line=202
-
-No node read in yet named s4n1
-No node read in yet named s4n2
-No node read in yet named s4n3
-No node read in yet named s4n4
-No node read in yet named s4n5
-No node read in yet named s4n6
-No node read in yet named s4n7
-No node read in yet named s4n8
-No node read in yet named s4n9
-No node read in yet named s4n10
-No node read in yet named s4n11
-No node read in yet named s4n12
-No node read in yet named s4n13
-No node read in yet named s4n14
-No node read in yet named s4n15
-No node read in yet named s4n16
-No node read in yet named s4n17
-No node read in yet named s4n18
-No node read in yet named s4n19
-No node read in yet named s4n20
-No node read in yet named s4n21
-No node read in yet named s4n22
-No node read in yet named s4n23
-No node read in yet named s4n24
-No node read in yet named s4n25
-No node read in yet named s4n26
-No node read in yet named s4n27
-No node read in yet named s4n28
-No node read in yet named s4n29
-No node read in yet named s4n30
-No node read in yet named s4n31
-No node read in yet named s4n32
-No node read in yet named s4n33
-No node read in yet named s4n34
-No node read in yet named s4n35
-No node read in yet named s4n36
-No node read in yet named s4n37
-No node read in yet named s4n38
-No node read in yet named s4n39
-No node read in yet named s4n40
-No node read in yet named s4n41
-No node read in yet named s4n42
-No node read in yet named s4n43
-No node read in yet named s4n44
-No node read in yet named s4n45
-No node read in yet named s4n46
-No node read in yet named s4n47
-No node read in yet named s4n48
-No node read in yet named s4n49
-addexternal: No node read in yet named s1n1
-addexternal: No node read in yet named s2n1
-addexternal: No node read in yet named s3n1
-addexternal: No node read in yet named s4n1
+No node read in yet named nsection-1_node_1
+No node read in yet named nsection-1_node_2
+No node read in yet named nsection-1_node_3
+No node read in yet named nsection-1_node_4
+No node read in yet named nsection-1_node_5
+No node read in yet named nsection-1_node_6
+No node read in yet named nsection-1_node_7
+No node read in yet named nsection-1_node_8
+No node read in yet named nsection-1_node_9
+No node read in yet named nsection-1_node_10
+No node read in yet named nsection-1_node_11
+No node read in yet named nsection-1_node_12
+No node read in yet named nsection-1_node_13
+No node read in yet named nsection-1_node_14
+No node read in yet named nsection-1_node_15
+No node read in yet named nsection-1_node_16
+No node read in yet named nsection-1_node_17
+No node read in yet named nsection-1_node_18
+No node read in yet named nsection-1_node_19
+No node read in yet named nsection-1_node_20
+No node read in yet named nsection-1_node_21
+No node read in yet named nsection-1_node_22
+No node read in yet named nsection-1_node_23
+No node read in yet named nsection-1_node_24
+No node read in yet named nsection-1_node_25
+No node read in yet named nsection-1_node_26
+No node read in yet named nsection-1_node_27
+No node read in yet named nsection-1_node_28
+No node read in yet named nsection-1_node_29
+No node read in yet named nsection-1_node_30
+No node read in yet named nsection-1_node_31
+No node read in yet named nsection-1_node_32
+No node read in yet named nsection-1_node_33
+No node read in yet named nsection-1_node_34
+No node read in yet named nsection-1_node_35
+No node read in yet named nsection-1_node_36
+No node read in yet named nsection-1_node_37
+No node read in yet named nsection-1_node_38
+No node read in yet named nsection-1_node_39
+No node read in yet named nsection-1_node_40
+No node read in yet named nsection-1_node_41
+No node read in yet named nsection-1_node_42
+No node read in yet named nsection-1_node_43
+No node read in yet named nsection-1_node_44
+No node read in yet named nsection-1_node_45
+No node read in yet named nsection-1_node_46
+No node read in yet named nsection-1_node_47
+No node read in yet named nsection-1_node_48
+No node read in yet named nsection-1_node_49
+No node read in yet named nsection-2_node_1
+No node read in yet named nsection-2_node_2
+No node read in yet named nsection-2_node_3
+No node read in yet named nsection-2_node_4
+No node read in yet named nsection-2_node_5
+No node read in yet named nsection-2_node_6
+No node read in yet named nsection-2_node_7
+No node read in yet named nsection-2_node_8
+No node read in yet named nsection-2_node_9
+No node read in yet named nsection-2_node_10
+No node read in yet named nsection-2_node_11
+No node read in yet named nsection-2_node_12
+No node read in yet named nsection-2_node_13
+No node read in yet named nsection-2_node_14
+No node read in yet named nsection-2_node_15
+No node read in yet named nsection-2_node_16
+No node read in yet named nsection-2_node_17
+No node read in yet named nsection-2_node_18
+No node read in yet named nsection-2_node_19
+No node read in yet named nsection-2_node_20
+No node read in yet named nsection-2_node_21
+No node read in yet named nsection-2_node_22
+No node read in yet named nsection-2_node_23
+No node read in yet named nsection-2_node_24
+No node read in yet named nsection-2_node_25
+No node read in yet named nsection-2_node_26
+No node read in yet named nsection-2_node_27
+No node read in yet named nsection-2_node_28
+No node read in yet named nsection-2_node_29
+No node read in yet named nsection-2_node_30
+No node read in yet named nsection-2_node_31
+No node read in yet named nsection-2_node_32
+No node read in yet named nsection-2_node_33
+No node read in yet named nsection-2_node_34
+No node read in yet named nsection-2_node_35
+No node read in yet named nsection-2_node_36
+No node read in yet named nsection-2_node_37
+No node read in yet named nsection-2_node_38
+No node read in yet named nsection-2_node_39
+No node read in yet named nsection-2_node_40
+No node read in yet named nsection-2_node_41
+No node read in yet named nsection-2_node_42
+No node read in yet named nsection-2_node_43
+No node read in yet named nsection-2_node_44
+No node read in yet named nsection-2_node_45
+No node read in yet named nsection-2_node_46
+No node read in yet named nsection-2_node_47
+No node read in yet named nsection-2_node_48
+No node read in yet named nsection-2_node_49
+No node read in yet named nsection-3_node_1
+No node read in yet named nsection-3_node_2
+No node read in yet named nsection-3_node_3
+No node read in yet named nsection-3_node_4
+No node read in yet named nsection-3_node_5
+No node read in yet named nsection-3_node_6
+No node read in yet named nsection-3_node_7
+No node read in yet named nsection-3_node_8
+No node read in yet named nsection-3_node_9
+No node read in yet named nsection-3_node_10
+No node read in yet named nsection-3_node_11
+No node read in yet named nsection-3_node_12
+No node read in yet named nsection-3_node_13
+No node read in yet named nsection-3_node_14
+No node read in yet named nsection-3_node_15
+No node read in yet named nsection-3_node_16
+No node read in yet named nsection-3_node_17
+No node read in yet named nsection-3_node_18
+No node read in yet named nsection-3_node_19
+No node read in yet named nsection-3_node_20
+No node read in yet named nsection-3_node_21
+No node read in yet named nsection-3_node_22
+No node read in yet named nsection-3_node_23
+No node read in yet named nsection-3_node_24
+No node read in yet named nsection-3_node_25
+No node read in yet named nsection-3_node_26
+No node read in yet named nsection-3_node_27
+No node read in yet named nsection-3_node_28
+No node read in yet named nsection-3_node_29
+No node read in yet named nsection-3_node_30
+No node read in yet named nsection-3_node_31
+No node read in yet named nsection-3_node_32
+No node read in yet named nsection-3_node_33
+No node read in yet named nsection-3_node_34
+No node read in yet named nsection-3_node_35
+No node read in yet named nsection-3_node_36
+No node read in yet named nsection-3_node_37
+No node read in yet named nsection-3_node_38
+No node read in yet named nsection-3_node_39
+No node read in yet named nsection-3_node_40
+No node read in yet named nsection-3_node_41
+No node read in yet named nsection-3_node_42
+No node read in yet named nsection-3_node_43
+No node read in yet named nsection-3_node_44
+No node read in yet named nsection-3_node_45
+No node read in yet named nsection-3_node_46
+No node read in yet named nsection-3_node_47
+No node read in yet named nsection-3_node_48
+No node read in yet named nsection-3_node_49
+No node read in yet named nsection-4_node_1
+No node read in yet named nsection-4_node_2
+No node read in yet named nsection-4_node_3
+No node read in yet named nsection-4_node_4
+No node read in yet named nsection-4_node_5
+No node read in yet named nsection-4_node_6
+No node read in yet named nsection-4_node_7
+No node read in yet named nsection-4_node_8
+No node read in yet named nsection-4_node_9
+No node read in yet named nsection-4_node_10
+No node read in yet named nsection-4_node_11
+No node read in yet named nsection-4_node_12
+No node read in yet named nsection-4_node_13
+No node read in yet named nsection-4_node_14
+No node read in yet named nsection-4_node_15
+No node read in yet named nsection-4_node_16
+No node read in yet named nsection-4_node_17
+No node read in yet named nsection-4_node_18
+No node read in yet named nsection-4_node_19
+No node read in yet named nsection-4_node_20
+No node read in yet named nsection-4_node_21
+No node read in yet named nsection-4_node_22
+No node read in yet named nsection-4_node_23
+No node read in yet named nsection-4_node_24
+No node read in yet named nsection-4_node_25
+No node read in yet named nsection-4_node_26
+No node read in yet named nsection-4_node_27
+No node read in yet named nsection-4_node_28
+No node read in yet named nsection-4_node_29
+No node read in yet named nsection-4_node_30
+No node read in yet named nsection-4_node_31
+No node read in yet named nsection-4_node_32
+No node read in yet named nsection-4_node_33
+No node read in yet named nsection-4_node_34
+No node read in yet named nsection-4_node_35
+No node read in yet named nsection-4_node_36
+No node read in yet named nsection-4_node_37
+No node read in yet named nsection-4_node_38
+No node read in yet named nsection-4_node_39
+No node read in yet named nsection-4_node_40
+No node read in yet named nsection-4_node_41
+No node read in yet named nsection-4_node_42
+No node read in yet named nsection-4_node_43
+No node read in yet named nsection-4_node_44
+No node read in yet named nsection-4_node_45
+No node read in yet named nsection-4_node_46
+No node read in yet named nsection-4_node_47
+No node read in yet named nsection-4_node_48
+No node read in yet named nsection-4_node_49
+addexternal: No node read in yet named nsection-1_node_1
+addexternal: No node read in yet named nsection-2_node_1
+addexternal: No node read in yet named nsection-3_node_1
+addexternal: No node read in yet named nsection-4_node_1
