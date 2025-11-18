@@ -4,7 +4,7 @@ FastHenry2 Windows porting and modifications, version 3.6
     (c) 1998, 2015 by Enrico Di Lorenzo, www.fastfieldsolvers.com
 
 Running FastHenry 3.0 (29Sep96)
-  Date: Tue Nov 18 09:17:48 2025
+  Date: Tue Nov 18 09:34:58 2025
 Solution technique: ITERATIVE
 Matrix vector product method: MULTIPOLE
   Order of expansion: 2
