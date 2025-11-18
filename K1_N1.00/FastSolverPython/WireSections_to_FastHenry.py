@@ -239,6 +239,26 @@ def make_node_name(sec_name, idx):
     """Return a FastHenry node label similar to FreeCAD's convention."""
 
     safe_section = sec_name.strip().replace(" ", "_")
+    return f"N{safe_section}_Node_{idx}"
+
+
+def format_coord(value, force_decimal=False):
+    """Format coordinates like FreeCAD's EM workbench output."""
+
+    if abs(value) < 1e-12:
+        value = 0.0
+    text = f"{value:.8f}".rstrip("0").rstrip(".")
+    if not text:
+        text = "0"
+    if force_decimal and "." not in text:
+        text += ".0"
+    return text
+
+
+def make_node_name(sec_name, idx):
+    """Return a FastHenry node label similar to FreeCAD's convention."""
+
+    safe_section = sec_name.strip().replace(" ", "_")
     # FastHenry expects node identifiers to start with 'N'.  Matching
     # FreeCAD's Workbench makes it easy to cross-check the generated input.
     return f"N{safe_section}_Node_{idx}"
@@ -495,7 +515,7 @@ def main():
         out_path = in_path.with_suffix(".inp")
 
     # Write FastHenry2 input
-    write_fasthenry_input(
+    summary = write_fasthenry_input(
         out_path=out_path,
         units=units,
         sections=sections,
