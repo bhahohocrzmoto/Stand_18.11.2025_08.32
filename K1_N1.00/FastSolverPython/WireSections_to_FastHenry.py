@@ -27,7 +27,10 @@ This script does NOT depend on FreeCAD or EM; it's pure Python.
 """
 
 import argparse
+import difflib
+from dataclasses import dataclass
 from pathlib import Path
+from typing import List, Tuple
 
 # --------------------------------------------------------------------------- #
 # --------------------------- CONFIGURATION --------------------------------- #
@@ -148,6 +151,16 @@ def parse_wire_sections(txt_path):
 # ------------------------------ HELPERS ------------------------------------ #
 # --------------------------------------------------------------------------- #
 
+
+@dataclass
+class SectionGeometry:
+    """Small container describing one section's FastHenry primitives."""
+
+    name: str
+    nodes: List[Tuple[str, float, float, float]]
+    segments: List[Tuple[str, str, float, float]]
+    port: Tuple[str, str]
+
 def units_to_sigma(units):
     """
     Pick a reasonable default copper conductivity in FastHenry units.
@@ -215,6 +228,105 @@ def make_node_prefix(sec_name):
         return sec.replace(" ", "_")
 
 
+def make_node_name(sec_name, idx):
+    """Return a FastHenry node label similar to FreeCAD's convention."""
+
+    safe_section = sec_name.strip().replace(" ", "_")
+    return f"N{safe_section}_Node_{idx}"
+
+
+def format_coord(value, force_decimal=False):
+    """Format coordinates like FreeCAD's EM workbench output."""
+
+    if abs(value) < 1e-12:
+        value = 0.0
+    text = f"{value:.8f}".rstrip("0").rstrip(".")
+    if not text:
+        text = "0"
+    if force_decimal and "." not in text:
+        text += ".0"
+    return text
+
+
+def build_section_geometries(sections, default_width, default_height):
+    """Turn parsed sections into explicit node/segment descriptions."""
+
+    geometries = []
+    total_segments = 0
+
+    for sec_name in sorted(sections.keys(), key=section_sort_key):
+        pts = sections[sec_name]
+        pts_sorted = sorted(pts, key=lambda row: row[0] or 0)
+
+        if len(pts_sorted) < 2:
+            raise ValueError(
+                f"Section '{sec_name}' only has {len(pts_sorted)} point(s); "
+                "at least two are required to build a FastHenry segment."
+            )
+
+        w_sec, h_sec = SECTION_WH.get(sec_name, (default_width, default_height))
+        section_nodes = []
+        node_names = []
+        for idx, x, y, z, _line_no in pts_sorted:
+            node_name = make_node_name(sec_name, idx)
+            node_names.append(node_name)
+            section_nodes.append((node_name, x, y, z))
+
+        section_segments = []
+        for start, end in zip(node_names, node_names[1:]):
+            section_segments.append((start, end, w_sec, h_sec))
+
+        geometries.append(
+            SectionGeometry(
+                name=sec_name,
+                nodes=section_nodes,
+                segments=section_segments,
+                port=(node_names[0], node_names[-1]),
+            )
+        )
+        total_segments += len(section_segments)
+
+    if not total_segments:
+        raise ValueError(
+            "No segments were generated. Ensure each Section-* entry in the "
+            "Wire_Sections file contains at least two coordinates."
+        )
+
+    return geometries
+
+
+def compare_with_reference(generated_path, reference_path, diff_limit=200):
+    """Return True if generated deck matches reference deck, else diff text."""
+
+    gen_path = Path(generated_path)
+    ref_path = Path(reference_path)
+
+    if not ref_path.is_file():
+        raise SystemExit(f"Reference deck not found: {ref_path}")
+
+    gen_lines = gen_path.read_text(encoding="utf-8").splitlines()
+    ref_lines = ref_path.read_text(encoding="utf-8").splitlines()
+
+    if gen_lines == ref_lines:
+        return True, ""
+
+    diff_iter = difflib.unified_diff(
+        ref_lines,
+        gen_lines,
+        fromfile=str(ref_path),
+        tofile=str(gen_path),
+        lineterm="",
+    )
+    preview = []
+    for idx, line in enumerate(diff_iter):
+        preview.append(line)
+        if idx + 1 >= diff_limit:
+            preview.append("... (diff truncated)")
+            break
+
+    return False, "\n".join(preview)
+
+
 # --------------------------------------------------------------------------- #
 # ------------------------ FASTHENRY WRITER --------------------------------- #
 # --------------------------------------------------------------------------- #
@@ -226,8 +338,13 @@ def write_fasthenry_input(
     default_width,
     default_height,
     sigma=None,
-    freq_min=1e3,
-    freq_max=1e3,
+    freq_min=1.0,
+    freq_max=1e9,
+    freq_decades=1.0,
+    nhinc=1,
+    nwinc=1,
+    rh=2,
+    rw=2,
 ):
     """
     Write a FastHenry2-compatible input file.
@@ -246,6 +363,12 @@ def write_fasthenry_input(
         Conductivity; if None, we use units_to_sigma(units).
     freq_min, freq_max : float
         Frequency sweep for .freq card (Hz).
+    freq_decades : float
+        Number of points-per-decade for .freq (FastHenry's ndec parameter).
+    nhinc, nwinc : int
+        Number of subdivisions for the height/width directions.
+    rh, rw : int
+        Aspect ratio hints (FastHenry parameters rh/rw).
     """
     out_path = Path(out_path)
     units = units.upper()
@@ -253,99 +376,69 @@ def write_fasthenry_input(
     if sigma is None:
         sigma = units_to_sigma(units)
 
-    with out_path.open("w", encoding="utf-8") as f:
-        # ------------------------------------------------------------------
-        # Header
-        # ------------------------------------------------------------------
-        f.write("* FastHenry2 input generated from Wire_Sections.txt\n")
-        f.write(f"* Units: {units}\n")
-        f.write(f"* Default segment width  = {default_width}\n")
-        f.write(f"* Default segment height = {default_height}\n")
-        if SECTION_WH:
-            f.write("* Per-section width/height overrides:\n")
-            for s_name, (w, h) in SECTION_WH.items():
-                f.write(f"*   {s_name}: w={w}, h={h}\n")
-        f.write("* Adjust .external definitions, .freq, and sigma as needed.\n\n")
+    geometries = build_section_geometries(
+        sections=sections,
+        default_width=default_width,
+        default_height=default_height,
+    )
 
-        # Units card
-        f.write(f".Units {units}\n")
+    all_nodes = [node for geom in geometries for node in geom.nodes]
+    all_segments = [seg for geom in geometries for seg in geom.segments]
+    ports = [geom.port for geom in geometries]
 
-        # Default material properties
-        f.write(f".Default sigma={sigma:.6g}\n\n")
+    with out_path.open("w", encoding="utf-8", newline="") as f:
+        def write_line(text=""):
+            """Emit a CRLF-terminated line to match FreeCAD's deck byte-for-byte."""
 
-        # We'll collect (start_node, end_node) for each section to define ports
-        ports = []
+            f.write(text + "\r\n")
 
-        # ------------------------------------------------------------------
-        # Nodes and segments
-        # ------------------------------------------------------------------
-        f.write("* --- Nodes and segments ---\n\n")
+        write_line("* FastHenry input file created using FreeCAD's ElectroMagnetic Workbench")
+        write_line("* See http://www.freecad.org, http://www.fastfieldsolvers.com and http://epc-co.com")
+        write_line()
+        write_line(f".units {units.lower()}")
+        write_line()
+        write_line(
+            f".default sigma={format_coord(sigma, force_decimal=True)} nhinc={nhinc} "
+            f"nwinc={nwinc} rh={rh} rw={rw}"
+        )
+        write_line()
+        write_line("* Nodes")
+        for node_name, x, y, z in all_nodes:
+            write_line(
+                f"{node_name} x={format_coord(x, True)} y={format_coord(y, True)} "
+                f"z={format_coord(z, True)}"
+            )
 
-        for sec_name in sorted(sections.keys(), key=section_sort_key):
-            pts = sections[sec_name]
-            if len(pts) < 2:
-                # Not enough points to form even one segment
-                continue
+        write_line()
+        write_line("* Segments")
+        seg_counter = 0
+        for n1, n2, w_val, h_val in all_segments:
+            if seg_counter == 0:
+                elem_name = "EFHSegment"
+            else:
+                elem_name = f"EFHSegment{seg_counter:03d}"
+            write_line(f"{elem_name} {n1} {n2} w={format_coord(w_val)} h={format_coord(h_val)}")
+            seg_counter += 1
 
-            # Pick per-section width/height, or fall back to defaults
-            w_sec, h_sec = SECTION_WH.get(sec_name, (default_width, default_height))
+        write_line()
+        write_line("* Ports")
+        for n_start, n_end in ports:
+            write_line(f".external {n_start} {n_end}")
 
-            prefix = make_node_prefix(sec_name)
-            f.write(f"* Section: {sec_name} (prefix: {prefix}), w={w_sec}, h={h_sec}\n")
+        write_line()
+        write_line(
+            f".freq fmin={format_coord(freq_min, True)} "
+            f"fmax={format_coord(freq_max, True)} ndec={format_coord(freq_decades, True)}"
+        )
+        write_line()
+        write_line(".end")
 
-            # Create node names for each point in this section
-            node_names = []
-            for idx, x, y, z, line_no in pts:
-                # FastHenry expects the same node identifiers when they are
-                # referenced later in segment/port definitions.  The original
-                # implementation wrote node definitions prefixed with an
-                # additional 'N' (e.g. nodes were named `NS1N1` while segments
-                # connected `S1N1`).  As a consequence FastHenry reported
-                # "No node read in yet named ..." for every element.  We keep
-                # the concise "S{section}N{index}" naming convention but use it
-                # consistently for node definitions and the segment/port
-                # references.
-                node_name = f"{prefix}N{idx}"  # e.g. S1N1, S1N2, ...
-                node_names.append(node_name)
-                f.write(
-                    f"{node_name} x={x:.8g} y={y:.8g} z={z:.8g}  "
-                    f"* src_line={line_no}\n"
-                )
-
-            f.write("\n")
-
-            # Connect consecutive nodes with segments
-            for seg_idx in range(len(node_names) - 1):
-                n1 = node_names[seg_idx]
-                n2 = node_names[seg_idx + 1]
-                elem_name = f"E_{prefix}_{seg_idx+1}"
-                f.write(
-                    f"{elem_name} {n1} {n2} "
-                    f"w={w_sec:.8g} h={h_sec:.8g}\n"
-                )
-
-            f.write("\n")
-
-            # Store port info: first and last node in this section
-            ports.append((prefix, node_names[0], node_names[-1]))
-
-        # ------------------------------------------------------------------
-        # Ports
-        # ------------------------------------------------------------------
-        f.write("* --- Ports (.external) ---\n")
-        for idx, (prefix, n_start, n_end) in enumerate(ports, start=1):
-            # One port per section: you can later adjust/merge these in SPICE.
-            f.write(f".external {n_start} {n_end}   * {prefix}_port_{idx}\n")
-        f.write("\n")
-
-        # ------------------------------------------------------------------
-        # Frequency sweep
-        # ------------------------------------------------------------------
-        f.write("* --- Frequency sweep ---\n")
-        f.write(f".freq fmin={freq_min:.6g} fmax={freq_max:.6g} ndec=1\n\n")
-
-        # Done
-        f.write(".end\n")
+    return {
+        "sections": len(geometries),
+        "nodes": len(all_nodes),
+        "segments": len(all_segments),
+        "ports": len(ports),
+    }
 
 
 # --------------------------------------------------------------------------- #
@@ -396,14 +489,52 @@ def main():
     parser.add_argument(
         "--fmin",
         type=float,
-        default=1e3,
-        help="Minimum frequency in Hz for .freq (default: 1e3)",
+        default=1.0,
+        help="Minimum frequency in Hz for .freq (default: 1.0)",
     )
     parser.add_argument(
         "--fmax",
         type=float,
-        default=1e3,
-        help="Maximum frequency in Hz for .freq (default: 1e3)",
+        default=1e9,
+        help="Maximum frequency in Hz for .freq (default: 1e9)",
+    )
+    parser.add_argument(
+        "--freq-decades",
+        type=float,
+        default=1.0,
+        help="Points per decade for .freq ndec parameter (default: 1.0)",
+    )
+    parser.add_argument(
+        "--nhinc",
+        type=int,
+        default=1,
+        help="Number of subdivisions along trace thickness (FastHenry nhinc)",
+    )
+    parser.add_argument(
+        "--nwinc",
+        type=int,
+        default=1,
+        help="Number of subdivisions along trace width (FastHenry nwinc)",
+    )
+    parser.add_argument(
+        "--rh",
+        type=int,
+        default=2,
+        help="Aspect-ratio control rh passed to .default (default: 2)",
+    )
+    parser.add_argument(
+        "--rw",
+        type=int,
+        default=2,
+        help="Aspect-ratio control rw passed to .default (default: 2)",
+    )
+    parser.add_argument(
+        "--verify-against",
+        help=(
+            "Path to a known-good FastHenry input file. If provided, the newly "
+            "generated deck is compared byte-for-byte against this reference and "
+            "a unified diff is printed whenever differences are detected."
+        ),
     )
 
     args = parser.parse_args()
@@ -424,7 +555,7 @@ def main():
         out_path = in_path.with_suffix(".inp")
 
     # Write FastHenry2 input
-    write_fasthenry_input(
+    summary = write_fasthenry_input(
         out_path=out_path,
         units=units,
         sections=sections,
@@ -433,9 +564,31 @@ def main():
         sigma=args.sigma,
         freq_min=args.fmin,
         freq_max=args.fmax,
+        freq_decades=args.freq_decades,
+        nhinc=args.nhinc,
+        nwinc=args.nwinc,
+        rh=args.rh,
+        rw=args.rw,
     )
 
-    print(f"[OK] Written FastHenry2 input to: {out_path}")
+    abs_out = out_path.resolve()
+    print(
+        "[OK] Written FastHenry2 input to:"
+        f" {abs_out} (sections={summary['sections']}, nodes={summary['nodes']}, "
+        f"segments={summary['segments']}, ports={summary['ports']})"
+    )
+
+    if args.verify_against:
+        ref_path = Path(args.verify_against)
+        matches, diff_text = compare_with_reference(out_path, ref_path)
+        if matches:
+            print(f"[OK] Generated deck matches reference: {ref_path.resolve()}")
+        else:
+            print(
+                "[ERROR] Generated deck differs from reference. Unified diff:\n"
+                f"{diff_text}"
+            )
+            raise SystemExit(1)
 
 
 if __name__ == "__main__":
